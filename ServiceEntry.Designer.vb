@@ -1,7 +1,7 @@
 ﻿Imports System.ServiceProcess
 
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Service1
+Partial Class ServiceEntry
     Inherits System.ServiceProcess.ServiceBase
 
     'UserService overrides dispose to clean up the component list.
@@ -17,9 +17,14 @@ Partial Class Service1
     End Sub
 
     ' The main entry point for the process
-    <MTAThread()> _
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <MTAThread()>
+    <System.Diagnostics.DebuggerNonUserCode()>
     Shared Sub Main()
+#If DEBUG Then
+        Dim i As nxn_AutoExtractService.ServiceEntry = New ServiceEntry
+        i.OnStart(Nothing)
+        System.Threading.Thread.Sleep(System.Threading.Timeout.Infinite)
+#End If
         Dim ServicesToRun() As System.ServiceProcess.ServiceBase
 
         ' More than one NT Service may run within the same process. To add
@@ -28,7 +33,7 @@ Partial Class Service1
         '
         '   ServicesToRun = New System.ServiceProcess.ServiceBase () {New Service1, New MySecondUserService}
         '
-        ServicesToRun = New System.ServiceProcess.ServiceBase() {New Service1}
+        ServicesToRun = New System.ServiceProcess.ServiceBase() {New ServiceEntry}
 
         System.ServiceProcess.ServiceBase.Run(ServicesToRun)
     End Sub
@@ -41,8 +46,11 @@ Partial Class Service1
     ' Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container()
-        Me.ServiceName = "Service1"
+        '
+        'Service1
+        '
+        Me.ServiceName = "nxn-AutoExtractService"
+
     End Sub
 
 End Class
