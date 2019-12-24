@@ -1,5 +1,4 @@
-﻿Imports Serilog
-Public Class ServiceEntry
+﻿Public Class ServiceEntry
 
     Protected Overrides Sub OnStart(ByVal args() As String)
         Log.Logger = New LoggerConfiguration() _
