@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "nxn-AutoExtractService"
-#define MyAppVersion "1.1"
+#define MyAppVersion "1.1.2"
 #define MyAppPublisher "neXn-Systems"
 #define MyAppURL "http://www.nexn.systems"
 #define MyAppExeName "nxn-AutoExtractService.exe"
@@ -20,8 +20,8 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 CreateAppDir=no
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
-;PrivilegesRequired=lowest
-PrivilegesRequiredOverridesAllowed=commandline
+PrivilegesRequired=admin 
+;PrivilegesRequiredOverridesAllowed=commandline
 OutputBaseFilename=AutoExtractServiceSetup
 Compression=lzma
 SolidCompression=yes
@@ -33,5 +33,12 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 [Files]
 Source: "C:\Users\SpReeD\Documents\Visual Studio 2019\Projects\nxn-AutoExtractService\bin\Release\nxn-AutoExtractService.exe"; DestDir: "{commonpf64}\neXn-Systems\nxn-AutoExtractService"; Flags: ignoreversion
 Source: "C:\Users\SpReeD\Documents\Visual Studio 2019\Projects\nxn-AutoExtractService\bin\Release\x64\7z.dll"; DestDir: "{commonpf64}\neXn-Systems\nxn-AutoExtractService\x64"; Flags: ignoreversion
-; NOTE: Don't use "Flags: ignoreversion" on any shared system files
+
+[run]
+Filename: {sys}\sc.exe; Parameters: "create nxn-AutoExtractService start=delayed-auto binPath= ""{commonpf64}\neXn-Systems\nxn-AutoExtractService\nxn-AutoExtractService.exe""" ; Flags: runhidden
+Filename: {sys}\sc.exe; Parameters: "start nxn-AutoExtractService" ; Flags: runhidden
+
+[UninstallRun]
+Filename: {sys}\sc.exe; Parameters: "stop nxn-AutoExtractService" ; Flags: runhidden
+Filename: {sys}\sc.exe; Parameters: "delete nxn-AutoExtractService" ; Flags: runhidden
 

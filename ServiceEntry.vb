@@ -4,6 +4,7 @@ Public Class ServiceEntry
     Protected Overrides Sub OnStart(ByVal args() As String)
         Log.Logger = New LoggerConfiguration() _
                             .WriteTo.Debug(0) _
+                            .WriteTo.File("C:\Users\SpReeD\Downloads\AutoExtract\logfile.log", rollOnFileSizeLimit:=True, fileSizeLimitBytes:=1000000) _
                             .CreateLogger()
 
         Try

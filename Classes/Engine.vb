@@ -1,7 +1,8 @@
 ﻿Imports System.IO
 Public Class Engine
     Private Property LoopRunning As Boolean = False
-    Public Shared ReadOnly DownloadFolderPath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads", "AutoExtract")
+    'Public Shared ReadOnly DownloadFolderPath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads", "AutoExtract")
+    Public Shared ReadOnly DownloadFolderPath As String = "C:\Users\SpReeD\Downloads\AutoExtract"
     Private ReadOnly AllowedFileExtensions As String() = {"zip", "rar", "7z", "gz"}
 
     Private ReadOnly DetectedFiles As List(Of CompressedFile) = New List(Of CompressedFile)
