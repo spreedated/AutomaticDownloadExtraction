@@ -31,8 +31,9 @@ WizardStyle=modern
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "C:\Users\SpReeD\Documents\Visual Studio 2019\Projects\nxn-AutoExtractService\bin\Release\nxn-AutoExtractService.exe"; DestDir: "{commonpf64}\neXn-Systems\nxn-AutoExtractService"; Flags: ignoreversion
-Source: "C:\Users\SpReeD\Documents\Visual Studio 2019\Projects\nxn-AutoExtractService\bin\Release\x64\7z.dll"; DestDir: "{commonpf64}\neXn-Systems\nxn-AutoExtractService\x64"; Flags: ignoreversion
+Source: "..\bin\Release\nxn-AutoExtractService.exe"; DestDir: "{commonpf64}\neXn-Systems\nxn-AutoExtractService"; Flags: ignoreversion
+Source: "..\bin\Release\x64\7z.dll"; DestDir: "{commonpf64}\neXn-Systems\nxn-AutoExtractService\x64"; Flags: ignoreversion
+Source: "config.nxn"; DestDir: "{commonpf64}\neXn-Systems\nxn-AutoExtractService"; Flags: ignoreversion
 
 [run]
 Filename: {sys}\sc.exe; Parameters: "create nxn-AutoExtractService start=delayed-auto binPath= ""{commonpf64}\neXn-Systems\nxn-AutoExtractService\nxn-AutoExtractService.exe""" ; Flags: runhidden

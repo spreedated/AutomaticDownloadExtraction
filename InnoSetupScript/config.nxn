@@ -1,0 +1,4 @@
+[config]
+writeLogFile=0
+writeHistoryFile=1
+operatingPath=
