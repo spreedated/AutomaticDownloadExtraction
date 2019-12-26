@@ -1,15 +1,12 @@
 ﻿Imports System.IO
 Public Class Engine
     Private Property LoopRunning As Boolean = False
-    'Public Shared ReadOnly DownloadFolderPath As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads", "AutoExtract")
-    Public Shared ReadOnly DownloadFolderPath As String = "C:\Users\SpReeD\Downloads\AutoExtract"
-    Private ReadOnly AllowedFileExtensions As String() = {"zip", "rar", "7z", "gz"}
+    Private ReadOnly AllowedFileExtensions As String() = {"zip", "rar", "7z", "gz", "tar"}
 
     Private ReadOnly DetectedFiles As List(Of CompressedFile) = New List(Of CompressedFile)
 
     Public Sub Initialize()
         Log.Information(ASCIIArt.serviceArt)
-
 
         Log.Information("| [+] Inititalizing startup sequence...")
         With LoopTimer
@@ -59,9 +56,9 @@ Public Class Engine
     Private IntegrityChecksPassed As Boolean = False
     Private Function S0()
         'Check if Folder exists
-        If Not Directory.Exists(downloadFolderPath) Then
+        If Not Directory.Exists(ServiceConfig.operatingPath) Then
             Try
-                Directory.CreateDirectory(downloadFolderPath)
+                Directory.CreateDirectory(ServiceConfig.operatingPath)
             Catch ex As Exception
                 Log.Error(ex, "| [" & SpecialChars.GetChar(SpecialChars.Chars.Crossmark) & "] Error 2000: ")
                 Return False
@@ -71,8 +68,8 @@ Public Class Engine
 
         'Is Folder writable
         Try
-            File.Create(Path.Combine(downloadFolderPath, "tmp"), 8, FileOptions.None).Close()
-            File.Delete(Path.Combine(downloadFolderPath, "tmp"))
+            File.Create(Path.Combine(ServiceConfig.operatingPath, "tmp"), 8, FileOptions.None).Close()
+            File.Delete(Path.Combine(ServiceConfig.operatingPath, "tmp"))
         Catch ex As Exception
             Log.Error(ex, "| [" & SpecialChars.GetChar(SpecialChars.Chars.Crossmark) & "] Error 2001: ")
             Return False
@@ -89,27 +86,27 @@ Public Class Engine
 #Region "Step 1 - Detection"
     Private Sub DetectFiles()
         'Detect Files
-        Directory.GetFiles(DownloadFolderPath).All(Function(x)
-                                                       Dim isInArray As Boolean = False
-                                                       If Array.IndexOf(AllowedFileExtensions, Path.GetExtension(x).Replace(".", "")) <= -1 Then
-                                                           Return True
-                                                       End If
+        Directory.GetFiles(ServiceConfig.operatingPath).All(Function(x)
+                                                                Dim isInArray As Boolean = False
+                                                                If Array.IndexOf(AllowedFileExtensions, Path.GetExtension(x).Replace(".", "")) <= -1 Then
+                                                                    Return True
+                                                                End If
 
-                                                       For Each f As CompressedFile In DetectedFiles
-                                                           If f.FileInfo.FullName = x Then
-                                                               isInArray = True
-                                                           End If
-                                                       Next
-                                                       If Not isInArray Then
-                                                           Dim f As CompressedFile = New CompressedFile With {
+                                                                For Each f As CompressedFile In DetectedFiles
+                                                                    If f.FileInfo.FullName = x Then
+                                                                        isInArray = True
+                                                                    End If
+                                                                Next
+                                                                If Not isInArray Then
+                                                                    Dim f As CompressedFile = New CompressedFile With {
                                                             .FileInfo = New FileInfo(x)
                                                            }
-                                                           DetectedFiles.Add(f)
-                                                           Log.Information(String.Format("| [+] New file detected ""{0}""", x))
-                                                       End If
+                                                                    DetectedFiles.Add(f)
+                                                                    Log.Information(String.Format("| [+] New file detected ""{0}""", x))
+                                                                End If
 
-                                                       Return True
-                                                   End Function)
+                                                                Return True
+                                                            End Function)
     End Sub
 #End Region
 
@@ -128,10 +125,12 @@ Public Class Engine
 
 #Region "Step 2.1 - Update History XML"
     Private Sub UpdateXML()
-        DetectedFiles.Where(Function(x) If(Not x.Processing And x.WasSuccessful, True, False)).All(Function(x)
-                                                                                                       HistoryXML.Update(x)
-                                                                                                       Return True
-                                                                                                   End Function)
+        If ServiceConfig.writeHistoryFile Then
+            DetectedFiles.Where(Function(x) If(Not x.Processing And x.WasSuccessful, True, False)).All(Function(x)
+                                                                                                           HistoryXML.Update(x)
+                                                                                                           Return True
+                                                                                                       End Function)
+        End If
     End Sub
 #End Region
 

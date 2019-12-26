@@ -2,7 +2,7 @@
 Imports System.Globalization
 Imports System.Reflection
 Public Class HistoryXML
-    Private Shared ReadOnly xmlDocPath As String = Path.Combine(Engine.DownloadFolderPath, "_extractionHistory.xml")
+    Private Shared ReadOnly xmlDocPath As String = Path.Combine(ServiceConfig.operatingPath, "_extractionHistory.xml")
     Public Shared Sub Update(ByRef x As CompressedFile)
         Dim xmlDoc As System.Xml.XmlDocument = New Xml.XmlDocument
 

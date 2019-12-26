@@ -1,7 +1,7 @@
 ﻿Imports Newtonsoft.Json
 Imports System.IO
 Public Class HistoryJSON
-    Private Shared ReadOnly jsonDocPath As String = Path.Combine(Engine.DownloadFolderPath, "_extractionHistory.nxn")
+    Private Shared ReadOnly jsonDocPath As String = Path.Combine(ServiceConfig.operatingPath, "_extractionHistory.nxn")
     Public Shared Sub Update(ByRef x As CompressedFile)
         Dim jsonDoc As String = ""
 

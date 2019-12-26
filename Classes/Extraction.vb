@@ -37,7 +37,7 @@ Public Class Extraction
         Dim sWatch As Stopwatch = New Stopwatch
         sWatch.Start()
 
-        Dim newFolder As String = Path.Combine(Engine.DownloadFolderPath, Path.GetFileNameWithoutExtension(x.FileInfo.Name))
+        Dim newFolder As String = Path.Combine(ServiceConfig.operatingPath, Path.GetFileNameWithoutExtension(x.FileInfo.Name))
         Try
             If Not Directory.Exists(newFolder) Then
                 Directory.CreateDirectory(newFolder)
@@ -69,7 +69,7 @@ Public Class Extraction
             'tar.gz Exception (Addtional Extraction of TAR)
             If x.FileInfo.Name.EndsWith(".tar.gz") Then
                 Dim tarName As String = Directory.GetFiles(newFolder).FirstOrDefault
-                Dim newerFolder As String = Path.Combine(Engine.DownloadFolderPath, x.FileInfo.Name.Replace(".tar.gz", ""))
+                Dim newerFolder As String = Path.Combine(ServiceConfig.operatingPath, x.FileInfo.Name.Replace(".tar.gz", ""))
                 If Not Directory.Exists(newerFolder) Then
                     Directory.CreateDirectory(newerFolder)
                 End If

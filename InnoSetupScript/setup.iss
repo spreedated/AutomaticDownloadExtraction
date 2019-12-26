@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "nxn-AutoExtractService"
-#define MyAppVersion "1.1.2"
+#define MyAppVersion "1.2.0"
 #define MyAppPublisher "neXn-Systems"
 #define MyAppURL "http://www.nexn.systems"
 #define MyAppExeName "nxn-AutoExtractService.exe"

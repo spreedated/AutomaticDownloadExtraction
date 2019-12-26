@@ -1,16 +1,17 @@
 ﻿Public Class ServiceEntry
 
     Protected Overrides Sub OnStart(ByVal args() As String)
-        Log.Logger = New LoggerConfiguration() _
-                            .WriteTo.Debug(0) _
-                            .WriteTo.File("C:\Users\SpReeD\Downloads\AutoExtract\logfile.log", rollOnFileSizeLimit:=True, fileSizeLimitBytes:=1000000) _
-                            .CreateLogger()
+        'Load config first
+        ServiceConfig.InitConfig()
+        'Load Logger
+        ServiceConfig.LoadLogger()
 
         Try
             Dim i As Engine = New Engine
             i.Initialize()
         Catch ex As Exception
             Log.Error(ex, "| Error 1000: ")
+            Environment.Exit(-1)
         End Try
     End Sub
 
@@ -18,7 +19,6 @@
         Log.Information("+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ +")
         Log.Information("|          Service closed         |")
         Log.Information("+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ +")
-
     End Sub
 
 End Class
