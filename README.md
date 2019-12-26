@@ -2,7 +2,8 @@
 
 AutomaticDownloadExtraction
 ===========================
-An easy to use library/wrapper/api-link library for your .NET projects.
+Automatically extracts archives in a selected directory. Perfect for your browsers download directory.
+Processes **ZIP** **RAR** **TAR** **GZ** **TAR.GZ**
 
 ### Enjoying this?
 Just star the repo or make a donation.
