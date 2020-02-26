@@ -25,7 +25,8 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>nxn-AutoExtractService.xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -35,7 +36,8 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>nxn-AutoExtractService.xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
@@ -71,10 +73,10 @@
     <Reference Include="Serilog.Sinks.File, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <HintPath>packages\Serilog.Sinks.File.4.1.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
     </Reference>
-    <Reference Include="SevenZipExtractor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\SevenZipExtractor.1.0.14\lib\net45\SevenZipExtractor.dll</HintPath>
-    </Reference>
     <Reference Include="mscorlib" />
+    <Reference Include="SevenZipExtractor, Version=1.0.15.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\SevenZipExtractor.1.0.15\lib\net45\SevenZipExtractor.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
@@ -164,14 +166,14 @@
     <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
-  <Import Project="packages\SevenZipExtractor.1.0.14\build\SevenZipExtractor.targets" Condition="Exists('packages\SevenZipExtractor.1.0.14\build\SevenZipExtractor.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\SevenZipExtractor.1.0.14\build\SevenZipExtractor.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\SevenZipExtractor.1.0.14\build\SevenZipExtractor.targets'))" />
-    <Error Condition="!Exists('packages\Fody.6.0.5\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Fody.6.0.5\build\Fody.targets'))" />
     <Error Condition="!Exists('packages\Costura.Fody.4.1.0\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Costura.Fody.4.1.0\build\Costura.Fody.props'))" />
+    <Error Condition="!Exists('packages\Fody.6.1.1\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Fody.6.1.1\build\Fody.targets'))" />
+    <Error Condition="!Exists('packages\SevenZipExtractor.1.0.15\build\SevenZipExtractor.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\SevenZipExtractor.1.0.15\build\SevenZipExtractor.targets'))" />
   </Target>
-  <Import Project="packages\Fody.6.0.5\build\Fody.targets" Condition="Exists('packages\Fody.6.0.5\build\Fody.targets')" />
+  <Import Project="packages\Fody.6.1.1\build\Fody.targets" Condition="Exists('packages\Fody.6.1.1\build\Fody.targets')" />
+  <Import Project="packages\SevenZipExtractor.1.0.15\build\SevenZipExtractor.targets" Condition="Exists('packages\SevenZipExtractor.1.0.15\build\SevenZipExtractor.targets')" />
 </Project>

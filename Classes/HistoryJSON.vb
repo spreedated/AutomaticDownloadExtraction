@@ -1,4 +1,12 @@
-﻿Imports Newtonsoft.Json
+﻿'*--------------------------------------*
+'*--------------------------------------*
+' 
+'   Unfinshed
+'
+'*--------------------------------------*
+'*--------------------------------------*
+
+Imports Newtonsoft.Json
 Imports System.IO
 Public Class HistoryJSON
     Private Shared ReadOnly jsonDocPath As String = Path.Combine(ServiceConfig.operatingPath, "_extractionHistory.nxn")

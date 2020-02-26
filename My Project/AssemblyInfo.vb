@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("AutoExtractService")>
 <Assembly: AssemblyCompany("neXn-Systems")>
 <Assembly: AssemblyProduct("nxn-AutoExtractService")>
-<Assembly: AssemblyCopyright("2019 © neXn-Systems")>
+<Assembly: AssemblyCopyright("2019-2020 © Markus Karl Wackermann")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.2.0.0")>
-<Assembly: AssemblyFileVersion("1.2.0.0")>
+<Assembly: AssemblyVersion("1.2.1.0")>
+<Assembly: AssemblyFileVersion("1.2.1.0")>

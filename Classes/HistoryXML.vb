@@ -1,10 +1,10 @@
 ﻿Imports System.IO
 Imports System.Globalization
-Imports System.Reflection
+Imports System.Xml
 Public Class HistoryXML
     Private Shared ReadOnly xmlDocPath As String = Path.Combine(ServiceConfig.operatingPath, "_extractionHistory.xml")
     Public Shared Sub Update(ByRef x As CompressedFile)
-        Dim xmlDoc As System.Xml.XmlDocument = New Xml.XmlDocument
+        Dim xmlDoc As XmlDocument = New XmlDocument
 
         If File.Exists(xmlDocPath) Then
             xmlDoc.Load(xmlDocPath)
@@ -13,10 +13,10 @@ Public Class HistoryXML
                 Directory.CreateDirectory(Path.GetDirectoryName(xmlDocPath))
             End If
             'Create XML
-            Dim xmlSettings As Xml.XmlWriterSettings = New Xml.XmlWriterSettings With {
+            Dim xmlSettings As XmlWriterSettings = New XmlWriterSettings With {
                 .Indent = True
                 }
-            Using writer As Xml.XmlWriter = System.Xml.XmlWriter.Create(xmlDocPath, xmlSettings)
+            Using writer As XmlWriter = XmlWriter.Create(xmlDocPath, xmlSettings)
                 'writer.Settings.Indent = True
                 writer.WriteStartDocument()
 
@@ -33,10 +33,10 @@ Public Class HistoryXML
         End If
 
         'Create New Node for File
-        Dim rootNode As Xml.XmlNode = xmlDoc.SelectSingleNode("AutoExtractionService")
+        Dim rootNode As XmlNode = xmlDoc.SelectSingleNode("AutoExtractionService")
 
         'New Parent Node
-        Dim fileNode As Xml.XmlNode = xmlDoc.CreateNode(Xml.XmlNodeType.Element, "ExtractedFile", "")
+        Dim fileNode As XmlNode = xmlDoc.CreateNode(XmlNodeType.Element, "ExtractedFile", "")
         Dim arrayList As Object(,) = {
                                         {"Name", x.FileInfo.Name},
                                         {"Type", x.FileInfo.Extension.Replace(".", "")},
@@ -49,7 +49,7 @@ Public Class HistoryXML
                                         {"Date", x.Date.ToString("g", CultureInfo.CreateSpecificCulture("de-DE"))}
         }
         For i = 0 To arrayList.GetLength(0) - 1
-            Dim b As Xml.XmlElement = xmlDoc.CreateElement(arrayList(i, 0))
+            Dim b As XmlElement = xmlDoc.CreateElement(arrayList(i, 0))
             b.InnerText = arrayList(i, 1).ToString
             fileNode.AppendChild(b)
         Next
