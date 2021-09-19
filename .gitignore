@@ -340,3 +340,7 @@ ASALocalRun/
 healthchecksdb
 
 InnoSetupScript/Output
+
+!Libs/*.pdb
+!nxn-AutoExtractor/x86/7z.dll
+!nxn-AutoExtractor/x64/7z.dll
