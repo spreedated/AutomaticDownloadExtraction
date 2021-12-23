@@ -1,4 +1,6 @@
-﻿using nxn_AutoExtractor.Classes;
+﻿#pragma warning disable S1185
+
+using nxn_AutoExtractor.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +27,7 @@ namespace nxn_AutoExtractor
         {
             base.OnPause();
         }
+
         public void StartDebugging()
         {
             this.OnStart(null);

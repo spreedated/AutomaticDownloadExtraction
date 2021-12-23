@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
+using neXn.Lib5.ASCIIArt;
+using neXn.Lib5.SpecialCharacters;
+using Serilog;
 
 namespace nxn_AutoExtractor.Classes
 {
@@ -13,15 +17,21 @@ namespace nxn_AutoExtractor.Classes
     {
         public static void Initialize()
         {
+            //Welcome
+            Log.Information(new Frame("neXn-Systems", new string[] { "Auto Extraction Service" }) { PrecedingLineBreak = true }.Build());
+
             //Init
             mainLoopTimer.Interval = 1000;
             mainLoopTimer.Elapsed += MainLoopTimerElapsed;
             mainLoopTimer.Start();
+
+            Log.Information($"| [{Chars.Checkmark}] Service fully initialized!");
+            Log.Information("");
         }
 
         #region Main Loop
-        internal static readonly System.Timers.Timer mainLoopTimer = new();
-        internal static bool loopRunning = false;
+        private static readonly System.Timers.Timer mainLoopTimer = new();
+        private static bool loopRunning = false;
         public static async void MainLoopTimerElapsed(object sender, ElapsedEventArgs e)
         {
             if (loopRunning)

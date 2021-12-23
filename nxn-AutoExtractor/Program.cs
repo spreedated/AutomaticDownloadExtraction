@@ -4,12 +4,12 @@ using System.Threading;
 
 namespace nxn_AutoExtractor
 {
-    internal class Program
+    internal static class Program
     {
         static void Main(string[] args)
         {
 #if DEBUG
-            ServiceEntry o = new ServiceEntry();
+            ServiceEntry o = new();
             o.StartDebugging();
             Thread.Sleep(Timeout.Infinite);
 #else
