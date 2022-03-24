@@ -49,7 +49,7 @@ namespace nxn_AutoExtractor.Classes
             loopRunning = false;
         }
         #endregion
-
+        
         #region Step 0
         public static async Task<bool> S0()
         {
