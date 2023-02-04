@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{AE52BD41-2
 	ProjectSection(SolutionItems) = preProject
 		Libs\x86\7z.dll = Libs\x86\7z.dll
 		Libs\x64\7z.dll = Libs\x64\7z.dll
-		Libs\neXn.Lib5.dll = Libs\neXn.Lib5.dll
-		Libs\neXn.Lib5.pdb = Libs\neXn.Lib5.pdb
 		Libs\SevenZipExtractor.dll = Libs\SevenZipExtractor.dll
 		Libs\SevenZipExtractor.pdb = Libs\SevenZipExtractor.pdb
 	EndProjectSection

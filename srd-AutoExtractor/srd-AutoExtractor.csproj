@@ -20,9 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="neXn.Lib5">
-      <HintPath>..\Libs\neXn.Lib5.dll</HintPath>
-    </Reference>
     <Reference Include="SevenZipExtractor">
       <HintPath>..\Libs\SevenZipExtractor.dll</HintPath>
     </Reference>
