@@ -7,8 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
-using neXn.Lib5.ASCIIArt;
-using neXn.Lib5.SpecialCharacters;
+using neXn.Lib.ASCIIArt;
 using Serilog;
 
 namespace srd_AutoExtractor.Classes
@@ -25,7 +24,7 @@ namespace srd_AutoExtractor.Classes
             mainLoopTimer.Elapsed += MainLoopTimerElapsed;
             mainLoopTimer.Start();
 
-            Log.Information($"| [{Chars.Checkmark}] Service fully initialized!");
+            Log.Information($"Service fully initialized!");
             Log.Information("");
         }
 

@@ -5,7 +5,6 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>wackermann.snk</AssemblyOriginatorKeyFile>
-    <CodeAnalysisRuleSet>..\.sonarlint\autoextractcsharp.ruleset</CodeAnalysisRuleSet>
     <PublishReadyToRun>true</PublishReadyToRun>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
   </PropertyGroup>
@@ -20,6 +19,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="neXn.Lib">
+      <HintPath>..\Libs\neXn.Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="neXn.Lib.Exceptions">
+      <HintPath>..\Libs\neXn.Lib.Exceptions.dll</HintPath>
+    </Reference>
     <Reference Include="SevenZipExtractor">
       <HintPath>..\Libs\SevenZipExtractor.dll</HintPath>
     </Reference>

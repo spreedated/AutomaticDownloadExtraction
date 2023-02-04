@@ -5,6 +5,7 @@
     <IsPackable>false</IsPackable>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>wackermann.snk</AssemblyOriginatorKeyFile>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
   </PropertyGroup>
 
   <ItemGroup>

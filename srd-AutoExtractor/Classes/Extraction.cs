@@ -4,9 +4,8 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using neXn.Lib5.SpecialCharacters;
-using neXn.Lib5.Files;
 using SevenZipExtractor;
+using neXn.Lib.Files;
 
 namespace srd_AutoExtractor.Classes
 {
@@ -14,6 +13,11 @@ namespace srd_AutoExtractor.Classes
     {
         internal CompressedFile compressedFile;
         internal string operatingPath;
+
+        public event EventHandler FolderAlreadyExists;
+        public event EventHandler<ExtractionStartedEventArgs> ExtractionStarted;
+        public event EventHandler<ExtractionCompletedEventArgs> ExtractionCompleted;
+        public event EventHandler ExtractionFailed;
 
         #region Constructor
         public Extraction(CompressedFile compressedFile, string operatingPath = null)
@@ -50,26 +54,18 @@ namespace srd_AutoExtractor.Classes
             var sWatch = new Stopwatch();
             sWatch.Start();
             string newFolder = Path.Combine(this.operatingPath, Path.GetFileNameWithoutExtension(this.compressedFile.FileInfo.Name));
-            try
+
+            if (Directory.Exists(newFolder))
             {
-                if (!Directory.Exists(newFolder))
-                {
-                    Directory.CreateDirectory(newFolder);
-                }
-                else
-                {
-                    Log.Warning("| [~] Folder already exists, extraction aborted");
-                    ExitExtraction();
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex, $"| [{Chars.Crossmark}] Error 3000: ");
+                this.FolderAlreadyExists?.Invoke(this, EventArgs.Empty);
+                ExitExtraction();
                 return;
             }
 
-            Log.Information($"| [+] Extraction started for \"{this.compressedFile.FileInfo.Name}\"");
+            Directory.CreateDirectory(newFolder);
+
+            this.ExtractionStarted?.Invoke(this, new(this.compressedFile.FileInfo.Name));
+
             try
             {
                 using (var archiveFile = new ArchiveFile(this.compressedFile.FileInfo.FullName))
@@ -125,12 +121,14 @@ namespace srd_AutoExtractor.Classes
 
 
                 sWatch.Stop();
-                Log.Information($"| [{Chars.Checkmark}] Extraction successful for \"" + this.compressedFile.FileInfo.Name + "\" in " + sWatch.Elapsed.TotalSeconds.ToString("0.##") + " Seconds");
+                Log.Information($"Extraction successful for \"" + this.compressedFile.FileInfo.Name + "\" in " + sWatch.Elapsed.TotalSeconds.ToString("0.##") + " Seconds");
                 this.compressedFile.OperationTime = sWatch.Elapsed.TotalSeconds;
+
+                this.ExtractionCompleted?.Invoke(this, new(this.compressedFile.FileInfo.Name, sWatch.Elapsed));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Log.Error(ex, $"| [{Chars.Crossmark}] Error 3001: ");
+                this.ExtractionFailed?.Invoke(this, EventArgs.Empty);
                 ExitExtraction();
                 return;
             }

@@ -7,13 +7,30 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "srd-AutoExtractor", "srd-Au
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{AE52BD41-2452-4487-8A05-E83FAFF201FC}"
 	ProjectSection(SolutionItems) = preProject
-		Libs\x86\7z.dll = Libs\x86\7z.dll
-		Libs\x64\7z.dll = Libs\x64\7z.dll
+		Libs\neXn.Lib.dll = Libs\neXn.Lib.dll
+		Libs\neXn.Lib.Exceptions.dll = Libs\neXn.Lib.Exceptions.dll
 		Libs\SevenZipExtractor.dll = Libs\SevenZipExtractor.dll
 		Libs\SevenZipExtractor.pdb = Libs\SevenZipExtractor.pdb
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTesting", "UnitTesting\UnitTesting.csproj", "{8B38A154-DBD1-4BBD-86AF-5BA005422A73}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x86", "x86", "{2153C3C1-B960-4F8F-A775-978305A9DA9D}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\x86\7z.dll = Libs\x86\7z.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x64", "x64", "{69560C19-54FA-4864-BEFC-C637747A9E67}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\x64\7z.dll = Libs\x64\7z.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6906C29F-EE92-4202-B261-A29ED1F71500}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +49,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2153C3C1-B960-4F8F-A775-978305A9DA9D} = {AE52BD41-2452-4487-8A05-E83FAFF201FC}
+		{69560C19-54FA-4864-BEFC-C637747A9E67} = {AE52BD41-2452-4487-8A05-E83FAFF201FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE6AE85C-F7DB-48C3-8DCF-C653D332D0DC}

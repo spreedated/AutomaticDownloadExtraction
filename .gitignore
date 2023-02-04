@@ -20,8 +20,6 @@
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
-x64/
-x86/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
@@ -342,7 +340,3 @@ ASALocalRun/
 healthchecksdb
 
 InnoSetupScript/Output
-
-!Libs/*.pdb
-!nxn-AutoExtractor/x86/7z.dll
-!nxn-AutoExtractor/x64/7z.dll
