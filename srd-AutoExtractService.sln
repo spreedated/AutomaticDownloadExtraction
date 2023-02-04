@@ -3,12 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31710.8
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "nxn-AutoExtractService", "nxn-AutoExtractService.vbproj", "{976B2FF3-6C5C-4515-87E5-6E9A1B3E91A8}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nxn-AutoExtractor", "nxn-AutoExtractor\nxn-AutoExtractor.csproj", "{A579828A-F25F-481E-9BC0-FCEC5AE36FE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "srd-AutoExtractor", "srd-AutoExtractor\srd-AutoExtractor.csproj", "{A579828A-F25F-481E-9BC0-FCEC5AE36FE8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{AE52BD41-2452-4487-8A05-E83FAFF201FC}"
 	ProjectSection(SolutionItems) = preProject
+		Libs\x86\7z.dll = Libs\x86\7z.dll
+		Libs\x64\7z.dll = Libs\x64\7z.dll
 		Libs\neXn.Lib5.dll = Libs\neXn.Lib5.dll
 		Libs\neXn.Lib5.pdb = Libs\neXn.Lib5.pdb
 		Libs\SevenZipExtractor.dll = Libs\SevenZipExtractor.dll
@@ -17,18 +17,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{AE52BD41-2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTesting", "UnitTesting\UnitTesting.csproj", "{8B38A154-DBD1-4BBD-86AF-5BA005422A73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nxn-AutoExtractor.Gui", "..\nxn-AutoExtractor.Gui\nxn-AutoExtractor.Gui.csproj", "{52167AAD-DFF7-40DC-BA29-915E48D1B3BE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{976B2FF3-6C5C-4515-87E5-6E9A1B3E91A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{976B2FF3-6C5C-4515-87E5-6E9A1B3E91A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{976B2FF3-6C5C-4515-87E5-6E9A1B3E91A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{976B2FF3-6C5C-4515-87E5-6E9A1B3E91A8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A579828A-F25F-481E-9BC0-FCEC5AE36FE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A579828A-F25F-481E-9BC0-FCEC5AE36FE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A579828A-F25F-481E-9BC0-FCEC5AE36FE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -37,10 +31,6 @@ Global
 		{8B38A154-DBD1-4BBD-86AF-5BA005422A73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B38A154-DBD1-4BBD-86AF-5BA005422A73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B38A154-DBD1-4BBD-86AF-5BA005422A73}.Release|Any CPU.Build.0 = Release|Any CPU
-		{52167AAD-DFF7-40DC-BA29-915E48D1B3BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{52167AAD-DFF7-40DC-BA29-915E48D1B3BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{52167AAD-DFF7-40DC-BA29-915E48D1B3BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{52167AAD-DFF7-40DC-BA29-915E48D1B3BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

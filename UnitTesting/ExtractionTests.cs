@@ -1,10 +1,7 @@
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using nxn_AutoExtractor.Classes;
 using nxn_AutoExtractor.Models;
+using System.IO;
 using System.Reflection;
 
 namespace UnitTesting
