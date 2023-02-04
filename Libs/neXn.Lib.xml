@@ -1,0 +1,1284 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>neXn.Lib</name>
+    </assembly>
+    <members>
+        <!-- Badly formed XML comment ignored for member "T:neXn.Lib.ASCIIArt.Frame" -->
+        <member name="M:neXn.Lib.ASCIIArt.Frame.#ctor(System.String,System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:neXn.Lib.ASCIIArt.Frame"/> class.
+            </summary>
+            <param name="heading">Header.</param>
+            <param name="rows">Rows.</param>
+        </member>
+        <member name="M:neXn.Lib.ASCIIArt.Frame.Build">
+            <summary>
+            Builds the frame with the text and header.
+            </summary>
+            <returns>Frame with text and header.</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:neXn.Lib.ASCIIArt.SmallFrame" -->
+        <member name="M:neXn.Lib.ASCIIArt.SmallFrame.#ctor(System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:neXn.Lib.ASCIIArt.SmallFrame"/> class.
+            </summary>
+            <param name="rows">Rows.</param>
+        </member>
+        <member name="M:neXn.Lib.ASCIIArt.SmallFrame.Build">
+            <summary>
+            Builds a frame with a text.
+            </summary>
+            <returns>Frame with text.</returns>
+        </member>
+        <member name="M:neXn.Lib.Extensions.Extensions.SetBit(System.Byte[],System.Int32,System.Boolean)">
+            <summary>
+            Sets a Bit in a <see cref="T:System.Byte"/>[] to the specific Value.
+            </summary>
+            <param name="self">Specific <see cref="T:System.Byte"/>[].</param>
+            <param name="index">Index of the Bit. Range: 0 - 7.</param>
+            <param name="value">Value of the Bit.</param>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+        </member>
+        <member name="M:neXn.Lib.Extensions.Extensions.SetBit(System.Byte@,System.Int32,System.Boolean)">
+            <summary>
+            Sets a Bit in a <see cref="T:System.Byte"/> to the specific Value.
+            </summary>
+            <param name="self">Specific <see cref="T:System.Byte"/>.</param>
+            <param name="index">Index of the Bit. Range: 0 - 7.</param>
+            <param name="value">Value of the Bit.</param>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="M:neXn.Lib.Extensions.Extensions.GetBit(System.Byte[],System.Int32)">
+            <summary>
+            Returns a Bit as <see cref="T:System.Boolean"/> of the <see cref="T:System.Byte"/>[].
+            </summary>
+            <param name="self"><see cref="T:System.Byte"/>[].</param>
+            <param name="index">Index of the Bit.</param>
+            <returns>Bit of the specific Index as <see cref="T:System.Boolean"/>.</returns>
+        </member>
+        <member name="M:neXn.Lib.Extensions.Extensions.GetBit(System.Byte,System.Int32)">
+            <summary>
+            Returns a Bit as <see cref="T:System.Boolean"/>.
+            </summary>
+            <param name="self">Specific <see cref="T:System.Byte"/>.</param>
+            <param name="index">Index of the Bit. Range: 0 - 7.</param>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <returns>The Bit of the specific Index as <see cref="T:System.Boolean"/>.</returns>
+        </member>
+        <member name="M:neXn.Lib.Extensions.Extensions.ToggleBit(System.Byte@,System.Int32)">
+            <summary>
+            Toggles the Bit at a specific Index.
+            </summary>
+            <param name="self">Specific <see cref="T:System.Byte"/>.</param>
+            <param name="index">Index of the Bit. Range: 0 - 7.</param>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+        </member>
+        <member name="M:neXn.Lib.Extensions.Extensions.ToggleBit(System.Byte[],System.Int32)">
+            <summary>
+            Toggles the Bit at a specific Index of the <see cref="T:System.Byte"/>[].
+            </summary>
+            <param name="self"></param>
+            <param name="index">Specific Index of the <see cref="T:System.Byte"/>[].</param>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+        </member>
+        <member name="T:neXn.Lib.ByteSizeLib.ByteSize">
+            <summary>
+            Represents a byte size value with support for decimal (KiloByte) and
+            binary values (KibiByte).
+            </summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.BytesInKibiByte">
+            <summary>Number of bytes in 1 kibibyte.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.BytesInMebiByte">
+            <summary>Number of bytes in 1 mebibyte.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.BytesInGibiByte">
+            <summary>Number of bytes in 1 gibibyte.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.BytesInTebiByte">
+            <summary>Number of bytes in 1 tebibyte.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.BytesInPebiByte">
+            <summary>Number of bytes in 1 pebibyte.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.KibiByteSymbol">
+            <summary>Kibibyte symbol.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.MebiByteSymbol">
+            <summary>Mebibyte symbol.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.GibiByteSymbol">
+            <summary>Gibibyte symbol.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.TebiByteSymbol">
+            <summary>Tebibyte symbol.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.PebiByteSymbol">
+            <summary>Pebibyte symbol.</summary>
+        </member>
+        <member name="P:neXn.Lib.ByteSizeLib.ByteSize.KibiBytes">
+            <summary>Gets the number of kibibytes represented by this object.</summary>
+        </member>
+        <member name="P:neXn.Lib.ByteSizeLib.ByteSize.MebiBytes">
+            <summary>Gets the number of mebibytes represented by this object.</summary>
+        </member>
+        <member name="P:neXn.Lib.ByteSizeLib.ByteSize.GibiBytes">
+            <summary>Gets the number of gibibytes represented by this object.</summary>
+        </member>
+        <member name="P:neXn.Lib.ByteSizeLib.ByteSize.TebiBytes">
+            <summary>Gets the number of tebibytes represented by this object.</summary>
+        </member>
+        <member name="P:neXn.Lib.ByteSizeLib.ByteSize.PebiBytes">
+            <summary>Gets the number of pebibytes represented by this object.</summary>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.FromKibiBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.#ctor(System.Int64)" />
+            <param name="value">Number of kibibytes (1 KiB = 1024 B).</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.FromMebiBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.#ctor(System.Int64)" />
+            <param name="value">Number of mebibytes (1 MiB = 1024 KiB).</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.FromGibiBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.#ctor(System.Int64)" />
+            <param name="value">Number of gibibytes (1 GiB = 1024 MiB).</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.FromTebiBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.#ctor(System.Int64)" />
+            <param name="value">Number of tebibytes (1 TiB = 1024 GiB).</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.FromPebiBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.#ctor(System.Int64)" />
+            <param name="value">Number of pebibytes (1 PiB = 1024 TiB).</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.AddKibiBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.Add(neXn.Lib.ByteSizeLib.ByteSize)" />
+            <param name="value">Number of kibibytes (1 KiB = 1024 B).</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.AddMebiBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.Add(neXn.Lib.ByteSizeLib.ByteSize)" />
+            <param name="value">Number of mebibytes (1 MiB = 1024 KiB).</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.AddGibiBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.Add(neXn.Lib.ByteSizeLib.ByteSize)" />
+            <param name="value">Number of gibibytes (1 GiB = 1024 MiB).</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.AddTebiBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.Add(neXn.Lib.ByteSizeLib.ByteSize)" />
+            <param name="value">Number of tebibytes (1 TiB = 1024 GiB).</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.AddPebiBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.Add(neXn.Lib.ByteSizeLib.ByteSize)" />
+            <param name="value">Number of pebibytes (1 PiB = 1024 TiB).</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.ToBinaryString">
+            <summary>
+            Converts the value of the current object to a binary byte string.
+            The prefix symbol (bit, byte, kibi, mebi, etc.) used is the
+            largest prefix such that the corresponding value is greater than or
+            equal to one.
+            </summary>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.ToBinaryString(System.IFormatProvider)">
+            <summary>
+            Converts the value of the current object to a binary byte string.
+            The prefix symbol (bit, byte, kibi, mebi, etc.) used is the
+            largest prefix such that the corresponding value is greater than or
+            equal to one.
+            Use <see cref="M:neXn.Lib.ByteSizeLib.ByteSize.ToString"/> for decimal string representation.
+            </summary>
+            <param name="formatProvider">An object that supplies culture-specific formatting information.</param>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.MinValue">
+            <summary>Minimum number of allowed bits in an instance.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.MaxValue">
+            <summary>Maximum number of allowed bits in an instance.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.BitsInByte">
+            <summary>Number of bits in 1 byte.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.BitSymbol">
+            <summary>Bit symbol.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.ByteSymbol">
+            <summary>Byte symbol.</summary>
+        </member>
+        <member name="P:neXn.Lib.ByteSizeLib.ByteSize.Bits">
+            <summary>Gets the number of bits represented by this object.</summary>
+        </member>
+        <member name="P:neXn.Lib.ByteSizeLib.ByteSize.Bytes">
+            <summary>Gets the number of bytes represented by this object.</summary>
+        </member>
+        <member name="P:neXn.Lib.ByteSizeLib.ByteSize.LargestWholeNumberBinarySymbol">
+            <summary>
+            Gets the largest whole number binary symbol.
+            Example: 
+            <para>- 1024 KiB will return MiB</para>
+            <para>- 1023 KiB will return KiB</para>
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.ByteSizeLib.ByteSize.LargestWholeNumberDecimalSymbol">
+            <summary>
+            Gets the largest whole number decimal symbol.
+            Example: 
+            <para>- 1000 KB will return MB</para>
+            <para>- 999 KB will return KB</para>
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.ByteSizeLib.ByteSize.LargestWholeNumberBinaryValue">
+            <summary>
+            Gets the largest whole number binary value.
+            Example: 
+            <para>- 1024 KiB will return 1</para>
+            <para>- 1023 KiB will return 1023</para>
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.ByteSizeLib.ByteSize.LargestWholeNumberDecimalValue">
+            <summary>
+            Gets the largest whole number decimal value.
+            Example: 
+            <para>- 1000 KB will return 1</para>
+            <para>- 999 KB will return 999</para>
+            </summary>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.#ctor(System.Int64)">
+            <summary>
+            Initializes a new instance of the <see cref="T:neXn.Lib.ByteSizeLib.ByteSize" /> structure to the specified
+            number of units.
+            </summary>
+            <param name="bits">Number of bits.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.#ctor(System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:neXn.Lib.ByteSizeLib.ByteSize" /> structure to the specified
+            number of units.
+            </summary>
+            <param name="bytes">Number of bytes.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.FromBits(System.Int64)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.#ctor(System.Int64)" />
+            <param name="value">Number of bits.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.FromBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.#ctor(System.Int64)" />
+            <param name="value">Number of bytes.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.ToString">
+            <summary>
+            Converts the value of the current object to a decimal byte string.
+            The prefix symbol (bit, byte, kilo, mega, etc.) used is the
+            largest prefix such that the corresponding value is greater than or
+            equal to one.
+            Use <see cref="M:neXn.Lib.ByteSizeLib.ByteSize.ToBinaryString"/> for binary string representation.
+            </summary>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.ToString(System.String)">
+            <summary>
+            Converts the value of the current object to a decimal byte string.
+            The prefix symbol (bit, byte, kilo, mega, etc.) used is the
+            largest prefix such that the corresponding value is greater than or
+            equal to one.
+            Use <see cref="M:neXn.Lib.ByteSizeLib.ByteSize.ToBinaryString"/> for binary string representation.
+            </summary>
+            <param name="format">A numeric format string.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.ToString(System.String,System.IFormatProvider)">
+            <summary>
+            Converts the value of the current object to a decimal byte string.
+            The prefix symbol (bit, byte, kilo, mega, etc.) used is the
+            largest prefix such that the corresponding value is greater than or
+            equal to one.
+            Use <see cref="M:neXn.Lib.ByteSizeLib.ByteSize.ToBinaryString"/> for binary string representation.
+            </summary>
+            <param name="format">A numeric format string.</param>
+            <param name="formatProvider">An object that supplies culture-specific formatting information.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.ToString(System.String,System.IFormatProvider,System.Boolean)">
+            <summary>
+            Converts the value of the current object to a decimal byte string.
+            The prefix symbol (bit, byte, kilo, mega, etc.) used is the
+            largest prefix such that the corresponding value is greater than or
+            equal to one.
+            Use <see cref="M:neXn.Lib.ByteSizeLib.ByteSize.ToBinaryString"/> for binary string representation.
+            </summary>
+            <param name="format">A numeric format string.</param>
+            <param name="provider">An object that supplies culture-specific formatting information.</param>
+            <param name="useBinaryByte"><see langword="true"/> to use binary byte values (1 KiB = 1024) instead of decimal values (1 KB = 1000 B).</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.Equals(System.Object)">
+            <summary>
+            Indicates whether an instance has equal number of bits to this instance.
+            </summary>
+            <param name="obj">The instance to compare.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.Equals(neXn.Lib.ByteSizeLib.ByteSize)">
+            <summary>
+            Indicates whether an instance has equal number of bits to this instance.
+            </summary>
+            <param name="value">The instance to compare.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.GetHashCode">
+            <summary>Returns the hash code for this instance.</summary>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.CompareTo(neXn.Lib.ByteSizeLib.ByteSize)">
+            <summary>
+            Compares this instance's bit count to the other instance's bit count.
+            </summary>
+            <param name="other">The instance to compare.</param>
+            <returns>
+            A signed number indicating the relative values of this instance and other. 
+            <para>Negative return value: this instance is less than the one specified.</para>
+            <para>Zero return value: this instance is equal to the one specified.</para>
+            <para>Positive return value: this instance is greater than the one specified.</para>
+            </returns>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.Add(neXn.Lib.ByteSizeLib.ByteSize)">
+            <summary>
+            Returns a new <see cref="T:neXn.Lib.ByteSizeLib.ByteSize" /> object whose value is the sum of the specified
+            value and this instance.
+            </summary>
+            <param name="bs">The <see cref="T:neXn.Lib.ByteSizeLib.ByteSize" /> instance to sum.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.AddBits(System.Int64)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.Add(neXn.Lib.ByteSizeLib.ByteSize)" />
+            <param name="value">The number of bits.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.AddBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.Add(neXn.Lib.ByteSizeLib.ByteSize)" />
+            <param name="value">The number of bytes.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.Subtract(neXn.Lib.ByteSizeLib.ByteSize)">
+            <summary>
+            Returns a new <see cref="T:neXn.Lib.ByteSizeLib.ByteSize" /> object whose value is the difference of the specified
+            value and this instance.
+            </summary>
+            <param name="bs">The <see cref="T:neXn.Lib.ByteSizeLib.ByteSize" /> instance to subtract.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.op_Addition(neXn.Lib.ByteSizeLib.ByteSize,neXn.Lib.ByteSizeLib.ByteSize)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.Add(neXn.Lib.ByteSizeLib.ByteSize)" />
+            <param name="b1">The first instance.</param>
+            <param name="b2">The second instance.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.op_Increment(neXn.Lib.ByteSizeLib.ByteSize)">
+            <summary>
+            Returns an instance whose value is 1 byte greater than this instance.
+            </summary>
+            <param name="b">The instance to increment.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.op_UnaryNegation(neXn.Lib.ByteSizeLib.ByteSize)">
+            <summary>
+            Returns a new instance whose value is the negative value of the specified instance.
+            </summary>
+            <param name="b">The instance to be negated.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.op_Subtraction(neXn.Lib.ByteSizeLib.ByteSize,neXn.Lib.ByteSizeLib.ByteSize)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.Subtract(neXn.Lib.ByteSizeLib.ByteSize)" />
+            <param name="b1">The first instance.</param>
+            <param name="b2">The second instance.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.op_Decrement(neXn.Lib.ByteSizeLib.ByteSize)">
+            <summary>
+            Returns a new instance whose value is 1 byte less than this instance.
+            </summary>
+            <param name="b">The instance to decrement.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.op_Multiply(neXn.Lib.ByteSizeLib.ByteSize,neXn.Lib.ByteSizeLib.ByteSize)">
+            <summary>
+            Multiply two instances.
+            </summary>
+            <param name="a">First instance to multiply.</param>
+            <param name="b">Second instance to multiply.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.op_Division(neXn.Lib.ByteSizeLib.ByteSize,neXn.Lib.ByteSizeLib.ByteSize)">
+            <summary>
+            Divides two instances.
+            </summary>
+            <param name="a">The dividend.</param>
+            <param name="b">The divisor.</param>
+            <exception cref="T:System.DivideByZeroException">Thrown if <paramref name="b" /> is zero.</exception>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.op_Equality(neXn.Lib.ByteSizeLib.ByteSize,neXn.Lib.ByteSizeLib.ByteSize)">
+            <summary>
+            Indicates whether two instances have equal number of bits.
+            </summary>
+            <param name="b1">The first instance to compare.</param>
+            <param name="b2">The second instance to compare.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.op_Inequality(neXn.Lib.ByteSizeLib.ByteSize,neXn.Lib.ByteSizeLib.ByteSize)">
+            <summary>
+            Indicates whether two instances have different number of bits.
+            </summary>
+            <param name="b1">The first instance to compare.</param>
+            <param name="b2">The second instance to compare.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.op_LessThan(neXn.Lib.ByteSizeLib.ByteSize,neXn.Lib.ByteSizeLib.ByteSize)">
+            <summary>
+            Indicates whether one instance has less bits than the other.
+            </summary>
+            <param name="b1">The first instance to compare.</param>
+            <param name="b2">The second instance to compare.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.op_LessThanOrEqual(neXn.Lib.ByteSizeLib.ByteSize,neXn.Lib.ByteSizeLib.ByteSize)">
+            <summary>
+            Indicates whether one instance has less or equal bits than the other.
+            </summary>
+            <param name="b1">The first instance to compare.</param>
+            <param name="b2">The second instance to compare.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.op_GreaterThan(neXn.Lib.ByteSizeLib.ByteSize,neXn.Lib.ByteSizeLib.ByteSize)">
+            <summary>
+            Indicates whether one instance has more bits than the other.
+            </summary>
+            <param name="b1">The first instance to compare.</param>
+            <param name="b2">The second instance to compare.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.op_GreaterThanOrEqual(neXn.Lib.ByteSizeLib.ByteSize,neXn.Lib.ByteSizeLib.ByteSize)">
+            <summary>
+            Indicates whether one instance has more bits or equal than the other.
+            </summary>
+            <param name="b1">The first instance to compare.</param>
+            <param name="b2">The second instance to compare.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.Parse(System.String)">
+            <summary>
+            Converts the string representation of a binary or decimal byte to its <see cref="T:neXn.Lib.ByteSizeLib.ByteSize" /> equivalent.
+            </summary>
+            <param name="s">A string that contains a <see cref="T:neXn.Lib.ByteSizeLib.ByteSize" /> to convert.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.Parse(System.String,System.IFormatProvider)">
+            <summary>
+            Converts the string representation of a binary or decimal byte to its <see cref="T:neXn.Lib.ByteSizeLib.ByteSize" /> equivalent.
+            </summary>
+            <param name="s">A string that contains a <see cref="T:neXn.Lib.ByteSizeLib.ByteSize" /> to convert.</param>
+            <param name="formatProvider">An object that supplies culture-specific formatting information.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.Parse(System.String,System.Globalization.NumberStyles,System.IFormatProvider)">
+            <summary>
+            Converts the string representation of a binary or decimal byte to its <see cref="T:neXn.Lib.ByteSizeLib.ByteSize" /> equivalent.
+            </summary>
+            <param name="s">A string that contains a <see cref="T:neXn.Lib.ByteSizeLib.ByteSize" /> to convert.</param>
+            <param name="numberStyles">Number style of the string being parsed.</param>
+            <param name="formatProvider">An object that supplies culture-specific formatting information.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.TryParse(System.String,neXn.Lib.ByteSizeLib.ByteSize@)">
+            <summary>
+            Converts the string representation of a binary or decimal byte to its <see cref="T:neXn.Lib.ByteSizeLib.ByteSize" /> equivalent.
+            Return value indicates success or failure of the parsing.
+            </summary>
+            <param name="s">A string that contains a <see cref="T:neXn.Lib.ByteSizeLib.ByteSize" /> to convert.</param>
+            <param name="result">Object reference to store the result if successful.</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.TryParse(System.String,System.Globalization.NumberStyles,System.IFormatProvider,neXn.Lib.ByteSizeLib.ByteSize@)">
+            <summary>
+            Converts the string representation of a binary or decimal byte to its <see cref="T:neXn.Lib.ByteSizeLib.ByteSize" /> equivalent.
+            Return value indicates success or failure of the parsing.
+            </summary>
+            <param name="s">A string that contains a <see cref="T:neXn.Lib.ByteSizeLib.ByteSize" /> to convert.</param>
+            <param name="numberStyles">Number style of the string being parsed.</param>
+            <param name="formatProvider">An object that supplies culture-specific formatting information.</param>
+            <param name="result">Object reference to store the result if successful.</param>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.BytesInKiloByte">
+            <summary>Number of bytes in 1 kilobyte.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.BytesInMegaByte">
+            <summary>Number of bytes in 1 megabyte.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.BytesInGigaByte">
+            <summary>Number of bytes in 1 gigabyte.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.BytesInTeraByte">
+            <summary>Number of bytes in 1 terabyte.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.BytesInPetaByte">
+            <summary>Number of bytes in 1 petabyte.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.KiloByteSymbol">
+            <summary>Kilobyte symbol.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.MegaByteSymbol">
+            <summary>Megabyte symbol.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.GigaByteSymbol">
+            <summary>Gigabyte symbol.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.TeraByteSymbol">
+            <summary>Terabyte symbol.</summary>
+        </member>
+        <member name="F:neXn.Lib.ByteSizeLib.ByteSize.PetaByteSymbol">
+            <summary>Petabyte symbol.</summary>
+        </member>
+        <member name="P:neXn.Lib.ByteSizeLib.ByteSize.KiloBytes">
+            <summary>Gets the number of kilobytes represented by this object.</summary>
+        </member>
+        <member name="P:neXn.Lib.ByteSizeLib.ByteSize.MegaBytes">
+            <summary>Gets the number of megabytes represented by this object.</summary>
+        </member>
+        <member name="P:neXn.Lib.ByteSizeLib.ByteSize.GigaBytes">
+            <summary>Gets the number of gigabytes represented by this object.</summary>
+        </member>
+        <member name="P:neXn.Lib.ByteSizeLib.ByteSize.TeraBytes">
+            <summary>Gets the number of terabytes represented by this object.</summary>
+        </member>
+        <member name="P:neXn.Lib.ByteSizeLib.ByteSize.PetaBytes">
+            <summary>Gets the number of petabytes represented by this object.</summary>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.FromKiloBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.#ctor(System.Int64)" />
+            <param name="value">Number of kilobytes (1 KB = 1000 B).</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.FromMegaBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.#ctor(System.Int64)" />
+            <param name="value">Number of megabytes (1 MB = 1000 KB).</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.FromGigaBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.#ctor(System.Int64)" />
+            <param name="value">Number of gigabytes (1 GB = 1000 MB).</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.FromTeraBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.#ctor(System.Int64)" />
+            <param name="value">Number of terabytes (1 TB = 1000 GB).</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.FromPetaBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.#ctor(System.Int64)" />
+            <param name="value">Number of terabytes (1 PB = 1000 TB).</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.AddKiloBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.Add(neXn.Lib.ByteSizeLib.ByteSize)" />
+            <param name="value">Number of kilobytes (1 KB = 1000 B).</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.AddMegaBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.Add(neXn.Lib.ByteSizeLib.ByteSize)" />
+            <param name="value">Number of megabytes (1 MB = 1000 KB).</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.AddGigaBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.Add(neXn.Lib.ByteSizeLib.ByteSize)" />
+            <param name="value">Number of gigabytes (1 GB = 1000 MB).</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.AddTeraBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.Add(neXn.Lib.ByteSizeLib.ByteSize)" />
+            <param name="value">Number of terabytes (1 TB = 1000 GB).</param>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSize.AddPetaBytes(System.Double)">
+            <inheritdoc cref="M:neXn.Lib.ByteSizeLib.ByteSize.Add(neXn.Lib.ByteSizeLib.ByteSize)" />
+            <param name="value">Number of petabytes (1 PB = 1000 TB).</param>
+        </member>
+        <member name="T:neXn.Lib.ByteSizeLib.ByteSizeTypeConverter">
+            <summary>
+            Provides a type converter to convert <see cref="T:neXn.Lib.ByteSizeLib.ByteSize"/> objects to and from <see cref="T:System.String"/> objects.
+            </summary>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSizeTypeConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSizeTypeConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSizeTypeConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.ByteSizeTypeConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="T:neXn.Lib.ByteSizeLib.EnumerableExtensions">
+            <summary>
+            Extension methods on sequence of <see cref="T:neXn.Lib.ByteSizeLib.ByteSize"/> values.
+            </summary>
+        </member>
+        <member name="M:neXn.Lib.ByteSizeLib.EnumerableExtensions.Sum(System.Collections.Generic.IEnumerable{neXn.Lib.ByteSizeLib.ByteSize})">
+            <summary>
+            Computes the sum of a sequence of <see cref="T:neXn.Lib.ByteSizeLib.ByteSize"/> values.
+            </summary>
+            <param name="byteSizes">A sequence of <see cref="T:neXn.Lib.ByteSizeLib.ByteSize"/> values to calculate the sum of.</param>
+            <returns>The sum of the values in the sequence.</returns>
+        </member>
+        <member name="M:neXn.Lib.Dates.Common.GetKW(System.DateTime)">
+            <summary>
+            Gibt die Kalenderwoche zurück.
+            </summary>
+            <param name="date">Datum.</param>
+            <returns>Kalenderwoche.</returns>
+        </member>
+        <member name="M:neXn.Lib.Dates.Extensions.GetQuarter(System.DateTime)">
+            <summary>
+            Get Quarter of date (1-4)
+            </summary>
+            <param name="date">From date</param>
+            <returns>Integer 1-4</returns>
+        </member>
+        <member name="M:neXn.Lib.Files.Core.IsFileLocked(System.String,System.Boolean)">
+            <summary>
+            Checks if the file we want to access is locked or not.
+            A lock means, another process might be still writing the file, e.g. the scanner
+            </summary>
+            <param name="filePath"></param>
+            <param name="exlusive">Dont share access to this file</param>
+            <returns></returns>
+        </member>
+        <member name="P:neXn.Lib.Files.MD5BalancingTree.MD5BalancingTree.FilePath">
+            <summary>
+            Path to file
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.Files.MD5BalancingTree.MD5BalancingTree.PathOutputPrefix">
+            <summary>
+            Adds path before output
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.Files.MD5BalancingTree.MD5BalancingTree.PathOutputBeforeFilename">
+            <summary>
+            Adds path right before filename
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.Files.MD5BalancingTree.MD5BalancingTree.PathOutputSuffix">
+            <summary>
+            Adds path to output
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.Files.MD5BalancingTree.MD5BalancingTree.PathOutputFilename">
+            <summary>
+            Changes output filename
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.Files.MD5BalancingTree.MD5BalancingTree.UseHashFileName">
+            <summary>
+            Use the Hashvalue as filename
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.Files.MD5BalancingTree.MD5BalancingTree.HashParts">
+            <summary>
+            Single part length
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.Files.MD5BalancingTree.MD5BalancingTree.UseOnlyCount">
+            <summary>
+            Restrict count usage
+            </summary>
+            <example>
+            4 will only use first 4 chars
+            </example>
+        </member>
+        <member name="P:neXn.Lib.Files.MD5BalancingTree.MD5BalancingTree.HashBytes">
+            <summary>
+            Dict of Filename and bytes
+            </summary>
+        </member>
+        <member name="M:neXn.Lib.Files.MD5BalancingTree.MD5BalancingTree.#ctor(System.String,System.Boolean,System.Boolean,System.Nullable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="filePath">Path to file</param>
+            <param name="useHashFileName">Replace filename with hashvalue</param>
+            <param name="noExtension">Remove extension</param>
+        </member>
+        <member name="M:neXn.Lib.Files.MD5BalancingTree.MD5BalancingTree.#ctor(System.Collections.Generic.KeyValuePair{System.String,System.Byte[]},System.Boolean,System.Nullable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="hashBytes"></param>
+            <param name="useHashFileName"></param>
+            <param name="useOnlyCount"></param>
+        </member>
+        <member name="M:neXn.Lib.Files.MD5BalancingTree.MD5BalancingTree.#ctor(System.Collections.Generic.KeyValuePair{System.String,System.Drawing.Bitmap},System.Boolean,System.Nullable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="hashBitmap"></param>
+            <param name="useHashFileName"></param>
+            <param name="noExtension">Always false</param>
+            <param name="useOnlyCount"></param>
+        </member>
+        <member name="T:neXn.Lib.Files.TextFileReader">
+            <summary>
+            Reads Textfile using fast algo into a string
+            </summary>
+        </member>
+        <member name="M:neXn.Lib.Files.TextFileReader.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="textFilepath">Path to textfile</param>
+        </member>
+        <member name="M:neXn.Lib.Files.TextFileReader.ReadFile">
+            <summary>
+            Reads textfile
+            </summary>
+        </member>
+        <member name="M:neXn.Lib.Files.TextFileReader.ReadR">
+            <summary>
+            Reads textfile
+            </summary>
+            <returns>Returns string</returns>
+        </member>
+        <member name="M:neXn.Lib.Files.TextFileReader.Read(System.String@)">
+            <summary>
+            Reads textfile
+            </summary>
+            <param name="DestinationString">Referenced variable</param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:neXn.Lib.Files.TrimFile.TextFileToSize(System.String,System.Int64,neXn.Lib.Files.Enumerations.LineEndings,System.Int32,System.String)" -->
+        <member name="M:neXn.Lib.Firewall.Common.AddRule(System.String,System.String,neXn.Lib.Firewall.Common.FirewallEnums,System.Boolean,neXn.Lib.Firewall.Common.FirewallEnums,neXn.Lib.Firewall.Common.FirewallEnums,neXn.Lib.Firewall.Common.FirewallEnums,System.String,System.Int32)">
+            <summary>
+                    ''' Needs ADMIN rights
+                    ''' </summary>
+                    ''' <param name="ruleName"></param>
+                    ''' <param name="pathToAppExe"></param>
+                    ''' <param name="direction">NET_FW_RULE_DIR_IN or NET_FW_RULE_DIR_OUT</param>
+                    ''' <param name="ruleEnabled"></param>
+                    ''' <param name="ruleAction">NET_FW_ACTION_BLOCK or NET_FW_ACTION_ALLOW</param>
+                    ''' <param name="protocol">NET_FW_IP_PROTOCOL_TCP - NET_FW_IP_PROTOCOL_UDP - NET_FW_IP_PROTOCOL_ANY - NET_FW_IP_PROTOCOL_ICMPv4 - NET_FW_IP_PROTOCOL_ICMPv6</param>
+                    ''' <param name="ruleDesc"></param>
+                    ''' <param name="localPort"></param>
+                    ''' <returns></returns>
+        </member>
+        <member name="M:neXn.Lib.Firewall.Common.ExistRule(System.String)">
+            <summary>
+            Returns Boolean if rule exists
+            </summary>
+            <param name="ruleName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:neXn.Lib.Fonts.CustomFont.CustomFontFromMemory">
+            <summary>
+            Add this to ApplictionEvents.vb
+            
+            Protected Overloads Shared ReadOnly Property UseCompatibleTextRendering() As Boolean
+            Get
+            ' Use the GDI+ text rendering engine.
+            Return True
+            End Get
+            End Property
+            </summary>
+        </member>
+        <member name="M:neXn.Lib.Hashes.Crc32.GetHash(System.String,neXn.Lib.Hashes.Crc32.Endians)">
+            <summary>
+            Computes CRC-32 from multiple buffers.
+            </summary>
+            <param name="val"></param>
+            <param name="endian"></param>
+            <returns></returns>
+        </member>
+        <member name="M:neXn.Lib.Hashes.Crc32.GetHashC(System.String,neXn.Lib.Hashes.Crc32.Endians)">
+            <summary>
+            Implementation of CRC-32C (Castagnoli).
+            </summary>
+            <param name="val"></param>
+            <param name="endian"></param>
+            <returns></returns>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32Algorithm.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:neXn.Lib.Hashes.CRC32Algo.Crc32Algorithm"/> class. 
+            </summary>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32Algorithm.Append(System.UInt32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Computes CRC-32 from multiple buffers.
+            Call this method multiple times to chain multiple buffers.
+            </summary>
+            <param name="initial">
+            Initial CRC value for the algorithm. It is zero for the first buffer.
+            Subsequent buffers should have their initial value set to CRC value returned by previous call to this method.
+            </param>
+            <param name="input">Input buffer with data to be checksummed.</param>
+            <param name="offset">Offset of the input data within the buffer.</param>
+            <param name="length">Length of the input data in the buffer.</param>
+            <returns>Accumulated CRC-32 of all buffers processed so far.</returns>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32Algorithm.Append(System.UInt32,System.Byte[])">
+            <summary>
+            Computes CRC-32 from multiple buffers.
+            Call this method multiple times to chain multiple buffers.
+            </summary>
+            <param name="initial">
+            Initial CRC value for the algorithm. It is zero for the first buffer.
+            Subsequent buffers should have their initial value set to CRC value returned by previous call to this method.
+            </param>
+            <param name="input">Input buffer containing data to be checksummed.</param>
+            <returns>Accumulated CRC-32 of all buffers processed so far.</returns>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32Algorithm.Compute(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Computes CRC-32 from input buffer.
+            </summary>
+            <param name="input">Input buffer with data to be checksummed.</param>
+            <param name="offset">Offset of the input data within the buffer.</param>
+            <param name="length">Length of the input data in the buffer.</param>
+            <returns>CRC-32 of the data in the buffer.</returns>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32Algorithm.Compute(System.Byte[])">
+            <summary>
+            Computes CRC-32 from input buffer.
+            </summary>
+            <param name="input">Input buffer containing data to be checksummed.</param>
+            <returns>CRC-32 of the buffer.</returns>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32Algorithm.ComputeAndWriteToEnd(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Computes CRC-32 from input buffer and writes it after end of data (buffer should have 4 bytes reserved space for it). Can be used in conjunction with <see cref="M:neXn.Lib.Hashes.CRC32Algo.Crc32Algorithm.IsValidWithCrcAtEnd(System.Byte[],System.Int32,System.Int32)"/>
+            </summary>
+            <param name="input">Input buffer with data to be checksummed.</param>
+            <param name="offset">Offset of the input data within the buffer.</param>
+            <param name="length">Length of the input data in the buffer.</param>
+            <returns>CRC-32 of the data in the buffer.</returns>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32Algorithm.ComputeAndWriteToEnd(System.Byte[])">
+            <summary>
+            Computes CRC-32 from input buffer - 4 bytes and writes it as last 4 bytes of buffer. Can be used in conjunction with <see cref="M:neXn.Lib.Hashes.CRC32Algo.Crc32Algorithm.IsValidWithCrcAtEnd(System.Byte[])"/>
+            </summary>
+            <param name="input">Input buffer with data to be checksummed.</param>
+            <returns>CRC-32 of the data in the buffer.</returns>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32Algorithm.IsValidWithCrcAtEnd(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Validates correctness of CRC-32 data in source buffer with assumption that CRC-32 data located at end of buffer in reverse bytes order. Can be used in conjunction with <see cref="M:neXn.Lib.Hashes.CRC32Algo.Crc32Algorithm.ComputeAndWriteToEnd(System.Byte[],System.Int32,System.Int32)"/>
+            </summary>
+            <param name="input">Input buffer with data to be checksummed.</param>
+            <param name="offset">Offset of the input data within the buffer.</param>
+            <param name="lengthWithCrc">Length of the input data in the buffer with CRC-32 bytes.</param>
+            <returns>Is checksum valid.</returns>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32Algorithm.IsValidWithCrcAtEnd(System.Byte[])">
+            <summary>
+            Validates correctness of CRC-32 data in source buffer with assumption that CRC-32 data located at end of buffer in reverse bytes order. Can be used in conjunction with <see cref="M:neXn.Lib.Hashes.CRC32Algo.Crc32Algorithm.ComputeAndWriteToEnd(System.Byte[],System.Int32,System.Int32)"/>
+            </summary>
+            <param name="input">Input buffer with data to be checksummed.</param>
+            <returns>Is checksum valid.</returns>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32Algorithm.Initialize">
+            <summary>
+            Resets internal state of the algorithm. Used internally.
+            </summary>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32Algorithm.HashCore(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Appends CRC-32 from given buffer
+            </summary>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32Algorithm.HashFinal">
+            <summary>
+            Computes CRC-32 from <see cref="M:neXn.Lib.Hashes.CRC32Algo.Crc32Algorithm.HashCore(System.Byte[],System.Int32,System.Int32)"/>
+            </summary>
+        </member>
+        <member name="T:neXn.Lib.Hashes.CRC32Algo.Crc32CAlgorithm">
+            <summary>
+            Implementation of CRC-32C (Castagnoli).
+            This class supports several convenient static methods returning the CRC as UInt32.
+            </summary>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32CAlgorithm.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:neXn.Lib.Hashes.CRC32Algo.Crc32CAlgorithm"/> class. 
+            </summary>
+            <param name="isBigEndian">Should return bytes result as big endian or little endian</param>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32CAlgorithm.Append(System.UInt32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Computes CRC-32C from multiple buffers.
+            Call this method multiple times to chain multiple buffers.
+            </summary>
+            <param name="initial">
+            Initial CRC value for the algorithm. It is zero for the first buffer.
+            Subsequent buffers should have their initial value set to CRC value returned by previous call to this method.
+            </param>
+            <param name="input">Input buffer with data to be checksummed.</param>
+            <param name="offset">Offset of the input data within the buffer.</param>
+            <param name="length">Length of the input data in the buffer.</param>
+            <returns>Accumulated CRC-32C of all buffers processed so far.</returns>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32CAlgorithm.Append(System.UInt32,System.Byte[])">
+            <summary>
+            Computes CRC-32C from multiple buffers.
+            Call this method multiple times to chain multiple buffers.
+            </summary>
+            <param name="initial">
+            Initial CRC value for the algorithm. It is zero for the first buffer.
+            Subsequent buffers should have their initial value set to CRC value returned by previous call to this method.
+            </param>
+            <param name="input">Input buffer containing data to be checksummed.</param>
+            <returns>Accumulated CRC-32C of all buffers processed so far.</returns>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32CAlgorithm.Compute(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Computes CRC-32C from input buffer.
+            </summary>
+            <param name="input">Input buffer with data to be checksummed.</param>
+            <param name="offset">Offset of the input data within the buffer.</param>
+            <param name="length">Length of the input data in the buffer.</param>
+            <returns>CRC-32C of the data in the buffer.</returns>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32CAlgorithm.Compute(System.Byte[])">
+            <summary>
+            Computes CRC-32C from input buffer.
+            </summary>
+            <param name="input">Input buffer containing data to be checksummed.</param>
+            <returns>CRC-32C of the buffer.</returns>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32CAlgorithm.ComputeAndWriteToEnd(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Computes CRC-32C from input buffer and writes it after end of data (buffer should have 4 bytes reserved space for it). Can be used in conjunction with <see cref="M:neXn.Lib.Hashes.CRC32Algo.Crc32CAlgorithm.IsValidWithCrcAtEnd(System.Byte[],System.Int32,System.Int32)"/>
+            </summary>
+            <param name="input">Input buffer with data to be checksummed.</param>
+            <param name="offset">Offset of the input data within the buffer.</param>
+            <param name="length">Length of the input data in the buffer.</param>
+            <returns>CRC-32C of the data in the buffer.</returns>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32CAlgorithm.ComputeAndWriteToEnd(System.Byte[])">
+            <summary>
+            Computes CRC-32C from input buffer - 4 bytes and writes it as last 4 bytes of buffer. Can be used in conjunction with <see cref="M:neXn.Lib.Hashes.CRC32Algo.Crc32CAlgorithm.IsValidWithCrcAtEnd(System.Byte[])"/>
+            </summary>
+            <param name="input">Input buffer with data to be checksummed.</param>
+            <returns>CRC-32C of the data in the buffer.</returns>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32CAlgorithm.IsValidWithCrcAtEnd(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Validates correctness of CRC-32C data in source buffer with assumption that CRC-32C data located at end of buffer in reverse bytes order. Can be used in conjunction with <see cref="M:neXn.Lib.Hashes.CRC32Algo.Crc32CAlgorithm.ComputeAndWriteToEnd(System.Byte[],System.Int32,System.Int32)"/>
+            </summary>
+            <param name="input">Input buffer with data to be checksummed.</param>
+            <param name="offset">Offset of the input data within the buffer.</param>
+            <param name="lengthWithCrc">Length of the input data in the buffer with CRC-32C bytes.</param>
+            <returns>Is checksum valid.</returns>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32CAlgorithm.IsValidWithCrcAtEnd(System.Byte[])">
+            <summary>
+            Validates correctness of CRC-32C data in source buffer with assumption that CRC-32C data located at end of buffer in reverse bytes order. Can be used in conjunction with <see cref="M:neXn.Lib.Hashes.CRC32Algo.Crc32CAlgorithm.ComputeAndWriteToEnd(System.Byte[],System.Int32,System.Int32)"/>
+            </summary>
+            <param name="input">Input buffer with data to be checksummed.</param>
+            <returns>Is checksum valid.</returns>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32CAlgorithm.Initialize">
+            <summary>
+            Resets internal state of the algorithm. Used internally.
+            </summary>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32CAlgorithm.HashCore(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Appends CRC-32C from given buffer
+            </summary>
+        </member>
+        <member name="M:neXn.Lib.Hashes.CRC32Algo.Crc32CAlgorithm.HashFinal">
+            <summary>
+            Computes CRC-32C from <see cref="M:neXn.Lib.Hashes.CRC32Algo.Crc32CAlgorithm.HashCore(System.Byte[],System.Int32,System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:neXn.Lib.Links.SymbolicLink.#ctor(System.String,System.String)">
+            <summary>
+            New Instance
+            </summary>
+            <param name="fromFile">Provide the target filepath, the one where the link should target to</param>
+            <param name="linkPath">Provide the links filepath, don't forget to add a lnk extension</param>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="T:neXn.Lib.RandomGeneration.RandomNumber">
+            <summary>
+            Class with Methods to Create Random Numbers.
+            </summary>
+        </member>
+        <member name="M:neXn.Lib.RandomGeneration.RandomNumber.GetRandomNumberS(System.Int32,System.Int32)">
+            <summary>
+            Using Seed - Now.Millisecond
+            </summary>
+            <returns>Random Number.</returns>
+        </member>
+        <member name="M:neXn.Lib.RandomGeneration.RandomNumber.GetRandomNumberNS(System.Int32,System.Int32)">
+            <summary>
+            Not using a Seed
+            </summary>
+            <returns>Random Number.</returns>
+        </member>
+        <member name="M:neXn.Lib.RandomGeneration.RandomNumber.GetRandomNumberT(System.Int32,System.Int32)">
+            <summary>
+            Seeded by tick
+            </summary>
+            <returns>Random Number.</returns>
+        </member>
+        <member name="M:neXn.Lib.RandomGeneration.RandomNumber.GetRandomNumberGUID(System.Int32,System.Int32)">
+            <summary>
+            GUID Seed
+            </summary>
+            <returns>Random Number.</returns>
+        </member>
+        <member name="T:neXn.Lib.RandomGeneration.RandomStrings">
+            <summary>
+            Class with Methods to Create Random Strings or Characters.
+            </summary>
+        </member>
+        <member name="M:neXn.Lib.RandomGeneration.RandomStrings.GetLetterFromString(System.String)">
+            <summary>
+            Get Random Character from String.
+            </summary>
+            <param name="str">Specific String.</param>
+            <returns>Random Character.</returns>
+        </member>
+        <member name="M:neXn.Lib.RandomGeneration.RandomStrings.GetASCII">
+            <summary>
+            Get Random Character.
+            </summary>
+            <returns>Random Character.</returns>
+        </member>
+        <member name="M:neXn.Lib.RandomGeneration.RandomStrings.GetASCIIWide">
+            <summary>
+            Get Random Character.
+            </summary>
+            <returns>Random Character.</returns>
+        </member>
+        <member name="M:neXn.Lib.RandomGeneration.RandomStrings.GetLetterFromAlphabet">
+            <summary>
+            Get Random Character from Alphabet.
+            </summary>
+            <returns>Random Character.</returns>
+        </member>
+        <member name="M:neXn.Lib.RandomGeneration.RandomStrings.GetRandomString(System.Int16)">
+            <summary>
+            Gets a Random String by Length.
+            </summary>
+            <param name="length">Specific Length.</param>
+            <returns>Random String.</returns>
+        </member>
+        <member name="M:neXn.Lib.Rights.CheckAdminRights.IsElevated">
+            <summary>
+            Returns True on AdminRights (Elevated)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:neXn.Lib.SpecialCharacters.Chars">
+            <summary>
+            Class with Special Characters.
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.Checkmark">
+            <summary>
+            Checkmark: ✓
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.CheckmarkBold">
+            <summary>
+            Checkmark Bold: ✔
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.Crossmark">
+            <summary>
+            Crossmark: ✗
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.CrossmarkBold">
+            <summary>
+            Crossmark Bold: ✘
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.OverLine">
+            <summary>
+            Overline: ¯ ALT + 238
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.CongruenceRelation">
+            <summary>
+            Congruence Relation: ≡ ALT + 240
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.DoubleUnderline">
+            <summary>
+            Double Underline: ‗ ALT + 242
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.PlusMinus">
+            <summary>
+            Plus Minus: ± ALT + 241
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.Division">
+            <summary>
+            Division: ÷ ALT + 246
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.Heart">
+            <summary>
+            Heart: ♥ ALT + 3
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.Macron">
+            <summary>
+            Macron: ¯ ALT + 238
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.LeftDoubleAngleQuotationMark">
+            <summary>
+            Left Double Angle Quotation Mark: « ALT + 174
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.RightDoubleAngleQuotationMark">
+            <summary>
+            Right Double Angle Quotation Mark: » ALT + 175; ALT + 0187
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.Block">
+            <summary>
+            Block: █ ALT + 219
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.BlockBottomHalf">
+            <summary>
+            Block Bottom Half: ▄ ALT + 220
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.BlockTopHalf">
+            <summary>
+            Block Top Half: ▀ ALT + 223
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.BlackSquare">
+            <summary>
+            Black Square: ■ ALT + 254
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.PipeSE">
+            <summary>
+            Pipe South East: ╔ ALT + 457; ALT + 201
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.PipeSW">
+            <summary>
+            Pipe South West: ╗ ALT + 187
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.PipeNE">
+            <summary>
+            Pipe North East: ╚ ALT + 456; ALT + 200
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.PipeNW">
+            <summary>
+            Pipe North West: ╝ ALT + 188
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.PipeHorizontal">
+            <summary>
+            Pipe Horizontal: ═ ALT + 461; ALT + 205
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.PipeVertical">
+            <summary>
+            Pipe Vertical: ║ ALT + 186; ALT + 442
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.PipeVerticaltoRight">
+            <summary>
+            Pipe Vertical to Right: ╠ ALT + 460; ALT + 204
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.PipeVerticaltoLeft">
+            <summary>
+            Pipe Vertical to Left: ╣ ALT + 185; ALT + 441
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.PipeCross">
+            <summary>
+            Pipe Cross: ╬ ALT + 462; ALT + 206
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.PipeHorizontalDown">
+            <summary>
+            Pipe Horizontal Down: ╦ ALT + 459; ALT + 203
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.PipeHorizontalUp">
+            <summary>
+            Pipe Horizental Up: ╩ ALT + 458; ALT + 202
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.BoxVertical">
+            <summary>
+            Box Vertical: │
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.BoxHorizontal">
+            <summary>
+            Box Horizontal: ─
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.BoxSE">
+            <summary>
+            Box SE: ┌
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.BoxSW">
+            <summary>
+            Box SW: ┐
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.BoxNE">
+            <summary>
+            Box NE: └
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.BoxNW">
+            <summary>
+            Box NW: ┘
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.BoxVerticaltoRight">
+            <summary>
+            Box Vertical to Right: ├
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.BoxVerticaltoLeft">
+            <summary>
+            Box Vertical to Left: ┤
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.BoxCross">
+            <summary>
+            Box Cross: ┼
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.BoxHorizontalDown">
+            <summary>
+            Box Horizontal Down: ┬
+            </summary>
+        </member>
+        <member name="P:neXn.Lib.SpecialCharacters.Chars.BoxHorizontalUp">
+            <summary>
+            Box Horizental Up: ┴
+            </summary>
+        </member>
+        <member name="M:neXn.Lib.Strings.Common.ConvertToUTF8(System.String)">
+            <summary>
+            Wandelt einen Text in das UTF8 Format um.
+            </summary>
+            <param name="str">Der zu konvertierende Text</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:neXn.Lib.Strings.Common.Swap(System.String@,System.String@)">
+            <summary>
+            Vertauscht die Werte der zwei angegebenen Variablen.
+            </summary>
+            <param name="first">Erste Variable.</param>
+            <param name="second">Zweite Variable.</param>
+        </member>
+        <member name="M:neXn.Lib.Strings.Extensions.Extensions.ToNiceString(System.Version,System.Boolean)">
+            <summary>
+            Verschönerung der Versionsnummernangabe <br/>
+            z.B. aus 1.0.2.0 wird 1.0.2 <br/>
+            aus 1.1.0.0 wird 1.1 <br/>
+            aus 1.0.0.1 wird 1.0.2.1 <br/>
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:neXn.Lib.TimeStamp.Conversion.DateToTimeStamp(System.DateTime)">
+            <summary>
+            Converts a <see cref="T:System.DateTime"/> to Time Stamp.
+            </summary>
+            <param name="fromDateTime"></param>
+        </member>
+        <member name="M:neXn.Lib.TimeStamp.Conversion.TimeStampToDate(System.Int64)">
+            <summary>
+            Converts a Time Stamp to a <see cref="T:System.DateTime"/>.
+            </summary>
+            <param name="timeStamp">Time Stamp.</param>
+        </member>
+    </members>
+</doc>

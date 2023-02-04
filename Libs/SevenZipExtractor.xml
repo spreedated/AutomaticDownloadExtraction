@@ -1,0 +1,366 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SevenZipExtractor</name>
+    </assembly>
+    <members>
+        <member name="P:SevenZipExtractor.Entry.FileName">
+            <summary>
+            Name of the file with its relative path within the archive
+            </summary>
+        </member>
+        <member name="P:SevenZipExtractor.Entry.IsFolder">
+            <summary>
+            True if entry is a folder, false if it is a file
+            </summary>
+        </member>
+        <member name="P:SevenZipExtractor.Entry.Size">
+            <summary>
+            Original entry size
+            </summary>
+        </member>
+        <member name="P:SevenZipExtractor.Entry.PackedSize">
+            <summary>
+            Entry size in a archived state
+            </summary>
+        </member>
+        <member name="P:SevenZipExtractor.Entry.CreationTime">
+            <summary>
+            Date and time of the file (entry) creation
+            </summary>
+        </member>
+        <member name="P:SevenZipExtractor.Entry.LastWriteTime">
+            <summary>
+            Date and time of the last change of the file (entry)
+            </summary>
+        </member>
+        <member name="P:SevenZipExtractor.Entry.LastAccessTime">
+            <summary>
+            Date and time of the last access of the file (entry)
+            </summary>
+        </member>
+        <member name="P:SevenZipExtractor.Entry.CRC">
+            <summary>
+            CRC hash of the entry
+            </summary>
+        </member>
+        <member name="P:SevenZipExtractor.Entry.Attributes">
+            <summary>
+            Attributes of the entry
+            </summary>
+        </member>
+        <member name="P:SevenZipExtractor.Entry.IsEncrypted">
+            <summary>
+            True if entry is encrypted, otherwise false
+            </summary>
+        </member>
+        <member name="P:SevenZipExtractor.Entry.Comment">
+            <summary>
+            Comment of the entry
+            </summary>
+        </member>
+        <member name="P:SevenZipExtractor.Entry.Method">
+            <summary>
+            Compression method of the entry
+            </summary>
+        </member>
+        <member name="P:SevenZipExtractor.Entry.HostOS">
+            <summary>
+            Host operating system of the entry
+            </summary>
+        </member>
+        <member name="P:SevenZipExtractor.Entry.IsSplitBefore">
+            <summary>
+            True if there are parts of this file in previous split archive parts
+            </summary>
+        </member>
+        <member name="P:SevenZipExtractor.Entry.IsSplitAfter">
+            <summary>
+            True if there are parts of this file in next split archive parts
+            </summary>
+        </member>
+        <member name="M:SevenZipExtractor.SafeLibraryHandle.ReleaseHandle">
+            <summary>Release library handle</summary>
+            <returns>true if the handle was released</returns>
+        </member>
+        <member name="T:SevenZipExtractor.SevenZipFormat">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.SevenZip">
+            <summary>
+            Open 7-zip archive format.
+            </summary>  
+            <remarks><a href="http://en.wikipedia.org/wiki/7-zip">Wikipedia information</a></remarks> 
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Arj">
+            <summary>
+            Proprietary Arj archive format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/ARJ">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.BZip2">
+            <summary>
+            Open Bzip2 archive format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/Bzip2">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Cab">
+            <summary>
+            Microsoft cabinet archive format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/Cabinet_(file_format)">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Chm">
+            <summary>
+            Microsoft Compiled HTML Help file format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/Microsoft_Compiled_HTML_Help">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Compound">
+            <summary>
+            Microsoft Compound file format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/Compound_File_Binary_Format">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Cpio">
+            <summary>
+            Open Cpio archive format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/Cpio">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Deb">
+            <summary>
+            Open Debian software package format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/Deb_(file_format)">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.GZip">
+            <summary>
+            Open Gzip archive format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/Gzip">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Iso">
+            <summary>
+            Open ISO disk image format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/ISO_image">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Lzh">
+            <summary>
+            Open Lzh archive format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/Lzh">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Lzma">
+            <summary>
+            Open core 7-zip Lzma raw archive format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/Lzma">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Nsis">
+            <summary>
+            Nullsoft installation package format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/NSIS">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Rar">
+            <summary>
+            RarLab Rar archive format.
+            </summary>
+            <remarks><a href="https://en.wikipedia.org/wiki/RAR_(file_format)">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Rar5">
+            <summary>
+            RarLab Rar archive format, version 5.
+            </summary>
+            <remarks><a href="https://en.wikipedia.org/wiki/RAR_(file_format)">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Rpm">
+            <summary>
+            Open Rpm software package format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/RPM_Package_Manager">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Split">
+            <summary>
+            Open split file format.
+            </summary>
+            <remarks><a href="?">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Tar">
+            <summary>
+            Open Tar archive format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/Tar_(file_format)">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Wim">
+            <summary>
+            Microsoft Windows Imaging disk image format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/Windows_Imaging_Format">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Lzw">
+            <summary>
+            Open LZW archive format; implemented in "compress" program; also known as "Z" archive format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/Compress">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Zip">
+            <summary>
+            Open Zip archive format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/ZIP_(file_format)">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Udf">
+            <summary>
+            Open Udf disk image format.
+            </summary>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Xar">
+            <summary>
+            Xar open source archive format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/Xar_(archiver)">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Mub">
+            <summary>
+            Mub
+            </summary>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Hfs">
+            <summary>
+            Macintosh Disk Image on CD.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/HFS_Plus">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Dmg">
+            <summary>
+            Apple Mac OS X Disk Copy Disk Image format.
+            </summary>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.XZ">
+            <summary>
+            Open Xz archive format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/Xz">Wikipedia information</a></remarks>        
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Mslz">
+            <summary>
+            MSLZ archive format.
+            </summary>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Flv">
+            <summary>
+            Flash video format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/Flv">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Swf">
+            <summary>
+            Shockwave Flash format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/Swf">Wikipedia information</a></remarks>         
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.PE">
+            <summary>
+            Windows PE executable format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/Portable_Executable">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Elf">
+            <summary>
+            Linux executable Elf format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/Executable_and_Linkable_Format">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Msi">
+            <summary>
+            Windows Installer Database.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/Windows_Installer">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Vhd">
+            <summary>
+            Microsoft virtual hard disk file format.
+            </summary>
+            <remarks><a href="http://en.wikipedia.org/wiki/VHD_%28file_format%29">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.SquashFS">
+            <summary>
+            SquashFS file system format.
+            </summary>
+            <remarks><a href="https://en.wikipedia.org/wiki/SquashFS">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Lzma86">
+            <summary>
+            Lzma86 file format.
+            </summary>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Ppmd">
+            <summary>
+            Prediction by Partial Matching by Dmitry algorithm.
+            </summary>
+            <remarks><a href="https://en.wikipedia.org/wiki/Prediction_by_partial_matching">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.TE">
+            <summary>
+            TE format.
+            </summary>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.UEFIc">
+            <summary>
+            UEFIc format.
+            </summary>
+            <remarks><a href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.UEFIs">
+            <summary>
+            UEFIs format.
+            </summary>
+            <remarks><a href="https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.CramFS">
+            <summary>
+            Compressed ROM file system format.
+            </summary>
+            <remarks><a href="https://en.wikipedia.org/wiki/Cramfs">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.APM">
+            <summary>
+            APM format.
+            </summary>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Swfc">
+            <summary>
+            Swfc format.
+            </summary>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Ntfs">
+            <summary>
+            NTFS file system format.
+            </summary>
+            <remarks><a href="https://en.wikipedia.org/wiki/NTFS">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Fat">
+            <summary>
+            FAT file system format.
+            </summary>
+            <remarks><a href="https://en.wikipedia.org/wiki/File_Allocation_Table">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.Mbr">
+            <summary>
+            MBR format.
+            </summary>
+            <remarks><a href="https://en.wikipedia.org/wiki/Master_boot_record">Wikipedia information</a></remarks>
+        </member>
+        <member name="F:SevenZipExtractor.SevenZipFormat.MachO">
+            <summary>
+            Mach-O file format.
+            </summary>
+            <remarks><a href="https://en.wikipedia.org/wiki/Mach-O">Wikipedia information</a></remarks>
+        </member>
+    </members>
+</doc>
