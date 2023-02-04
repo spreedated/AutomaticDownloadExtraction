@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace nxn_AutoExtractor.Models
+namespace srd_AutoExtractor.Models
 {
     internal class Configuration
     {

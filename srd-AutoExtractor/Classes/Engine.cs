@@ -11,7 +11,7 @@ using neXn.Lib5.ASCIIArt;
 using neXn.Lib5.SpecialCharacters;
 using Serilog;
 
-namespace nxn_AutoExtractor.Classes
+namespace srd_AutoExtractor.Classes
 {
     internal static class Engine
     {

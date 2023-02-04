@@ -1,6 +1,6 @@
 using NUnit.Framework;
-using nxn_AutoExtractor.Classes;
-using nxn_AutoExtractor.Models;
+using srd_AutoExtractor.Classes;
+using srd_AutoExtractor.Models;
 using System.IO;
 using System.Reflection;
 

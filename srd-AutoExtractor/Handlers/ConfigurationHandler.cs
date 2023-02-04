@@ -1,33 +1,103 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Serilog;
+using System;
 using System.IO;
+using System.Timers;
+using srd_AutoExtractor.Models;
 
-namespace nxn_AutoExtractor.Logic
+namespace srd_AutoExtractor.Handlers
 {
-    internal class ConfigurationHandler
+    internal class ConfigurationHandler<T>
     {
-        private readonly string configPath;
+        private readonly CongfigurationHandlerOptions options;
+        private T runtimeConfiguration;
+        private Timer autoloadTimer;
+        private bool isAutoloadTimerRunning;
+
+        public event EventHandler AutoloadTriggered;
+        public event EventHandler ConfigLoaded;
+        public event EventHandler ConfigSaved;
+        public event EventHandler ConfigInvalid;
 
         #region Constructor
-        public ConfigurationHandler(string configPath)
+        public ConfigurationHandler(T runtimeConfiguration, CongfigurationHandlerOptions options)
         {
-            this.configPath = configPath;
+            if (options == null)
+            {
+                throw new ArgumentException("Cannot be null", nameof(options));
+            }
+            if (string.IsNullOrEmpty(options.ConfigPath))
+            {
+                throw new ArgumentException("The configpath cannot be unset", nameof(options));
+            }
+
+            this.runtimeConfiguration = runtimeConfiguration;
+            this.options = options;
+
+            this.InterpretOptions();
+        }
+        private void InterpretOptions()
+        {
+            if (!Directory.Exists(Path.GetDirectoryName(this.options.ConfigPath)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(this.options.ConfigPath));
+            }
+
+            if (this.options.Autorefresh)
+            {
+                this.EnableAutoload();
+            }
         }
         #endregion
 
+        public void EnableAutoload()
+        {
+            if (isAutoloadTimerRunning)
+            {
+                return;
+            }
+            this.autoloadTimer?.Dispose();
+
+            this.autoloadTimer = new()
+            {
+                Enabled = true,
+                Interval = this.options.AutoloadInterval.TotalMilliseconds
+            };
+
+            this.autoloadTimer.Elapsed += this.Autloadtimer_Elapsed;
+            this.autoloadTimer.Start();
+
+            this.isAutoloadTimerRunning = true;
+        }
+        public void DisableAutoload()
+        {
+            if (!isAutoloadTimerRunning)
+            {
+                return;
+            }
+            this.autoloadTimer?.Dispose();
+            this.isAutoloadTimerRunning = false;
+        }
+        private void Autloadtimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            this.AutoloadTriggered?.Invoke(this, EventArgs.Empty);
+            this.Load();
+        }
+
         public void Load()
         {
-            if (!File.Exists(configPath))
+            if (!File.Exists(this.options.ConfigPath))
             {
-                Log.Information($"No config found, creating new with default values");
-                Save();
+                if (this.options.CreateOnNothing)
+                {
+                    Save();
+                }
                 return;
             }
 
             string json = null;
 
-            using (FileStream fs = File.Open(configPath, new FileStreamOptions() { BufferSize = 128, Share = FileShare.Read, Mode = FileMode.Open }))
+            using (FileStream fs = File.Open(this.options.ConfigPath, new FileStreamOptions() { BufferSize = this.options.Buffersize, Share = FileShare.Read, Mode = FileMode.Open }))
             {
                 using (StreamReader r = new(fs))
                 {
@@ -37,42 +107,45 @@ namespace nxn_AutoExtractor.Logic
 
             if (!IsValidJson(json))
             {
-                Log.Warning($"Invalid config file found");
-                Save();
+                this.ConfigInvalid?.Invoke(this, EventArgs.Empty);
+                if (this.options.OverrideOnInvalid)
+                {
+                    Save();
+                }
                 return;
             }
 
-            ObjectStorage.Config = JsonConvert.DeserializeObject<Models.Configuration>(json);
+            this.runtimeConfiguration = JsonConvert.DeserializeObject<T>(json);
 
-            Log.Information($"Config loaded");
+            this.ConfigLoaded?.Invoke(this, EventArgs.Empty);
         }
 
         public void Save()
         {
-            if (!File.Exists(configPath))
+            if (!File.Exists(this.options.ConfigPath))
             {
                 TouchConfigFile();
             }
 
-            using (FileStream fs = File.Open(configPath, new FileStreamOptions() { BufferSize = 128, Share = FileShare.ReadWrite, Mode = FileMode.Truncate, Access = FileAccess.ReadWrite }))
+            using (FileStream fs = File.Open(this.options.ConfigPath, new FileStreamOptions() { BufferSize = this.options.Buffersize, Share = FileShare.ReadWrite, Mode = FileMode.Truncate, Access = FileAccess.ReadWrite }))
             {
                 using (StreamWriter w = new(fs))
                 {
-                    if (ObjectStorage.Config == null)
+                    if (this.runtimeConfiguration == null)
                     {
-                        ObjectStorage.Config = new();
+                        this.runtimeConfiguration = (T)Activator.CreateInstance(typeof(T));
                     }
 
-                    w.Write(JsonConvert.SerializeObject(ObjectStorage.Config, Formatting.Indented));
+                    w.Write(JsonConvert.SerializeObject(this.runtimeConfiguration, Formatting.Indented));
                 }
             }
 
-            Log.Information($"Config saved");
+            this.ConfigSaved?.Invoke(this, EventArgs.Empty);
         }
 
         internal void TouchConfigFile()
         {
-            File.Create(this.configPath).Dispose();
+            File.Create(this.options.ConfigPath).Dispose();
         }
 
         internal static bool IsValidJson(string json)
@@ -81,7 +154,7 @@ namespace nxn_AutoExtractor.Logic
             {
                 JObject.Parse(json);
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return false;
             }

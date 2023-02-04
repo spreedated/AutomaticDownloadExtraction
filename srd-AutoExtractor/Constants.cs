@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace nxn_AutoExtractor
+namespace srd_AutoExtractor
 {
     internal static class Constants
     {

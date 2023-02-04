@@ -1,20 +1,37 @@
 ﻿#pragma warning disable S1185
 
-using nxn_AutoExtractor.Classes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Serilog;
+using srd_AutoExtractor.Classes;
+using srd_AutoExtractor.Handlers;
+using srd_AutoExtractor.Logic;
+using System.IO;
 using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace nxn_AutoExtractor
+namespace srd_AutoExtractor
 {
     internal class ServiceEntry : ServiceBase
     {
+        private static void LoadConfiguration()
+        {
+            RuntimeStorage.ConfigurationHandler = new(RuntimeStorage.Configuration, new()
+            {
+                ConfigPath = Path.Combine(Path.GetDirectoryName(typeof(ServiceEntry).Assembly.Location), Constants.CONFIGURATION_FILENAME)
+            });
+
+            RuntimeStorage.ConfigurationHandler.ConfigSaved += (o, e) => Log.Verbose($"Config saved");
+            RuntimeStorage.ConfigurationHandler.ConfigInvalid += (o, e) => Log.Warning($"Invalid config file found");
+            RuntimeStorage.ConfigurationHandler.ConfigLoaded += (o, e) => Log.Verbose($"Config loaded");
+            RuntimeStorage.ConfigurationHandler.AutoloadTriggered += (o, e) => Log.Verbose($"Refreshing config");
+
+            RuntimeStorage.ConfigurationHandler.Load();
+        }
+
         protected override void OnStart(string[] args)
         {
             base.OnStart(args);
+            LoggerHandler.ConfigureLogger();
+            LoadConfiguration();
+
             Engine.Initialize();
         }
 

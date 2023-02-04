@@ -1,4 +1,4 @@
-﻿using nxn_AutoExtractor.Models;
+﻿using srd_AutoExtractor.Models;
 using Serilog;
 using System;
 using System.Diagnostics;
@@ -8,7 +8,7 @@ using neXn.Lib5.SpecialCharacters;
 using neXn.Lib5.Files;
 using SevenZipExtractor;
 
-namespace nxn_AutoExtractor.Classes
+namespace srd_AutoExtractor.Classes
 {
     public class Extraction
     {

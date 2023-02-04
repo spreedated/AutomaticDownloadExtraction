@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace nxn_AutoExtractor.Models
+namespace srd_AutoExtractor.Models
 {
     public class CompressedFile
     {

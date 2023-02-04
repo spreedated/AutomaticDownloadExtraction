@@ -1,8 +1,6 @@
-﻿using System;
-using System.ServiceProcess;
-using System.Threading;
+﻿using System.Threading;
 
-namespace nxn_AutoExtractor
+namespace srd_AutoExtractor
 {
     internal static class Program
     {
