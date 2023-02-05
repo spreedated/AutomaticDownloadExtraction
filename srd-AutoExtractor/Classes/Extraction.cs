@@ -1,145 +1,143 @@
-﻿using srd_AutoExtractor.Models;
-using Serilog;
+﻿using neXn.Lib.Files;
+using SevenZipExtractor;
+using SharpCompress.Readers;
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using SevenZipExtractor;
-using neXn.Lib.Files;
+using System.Threading.Tasks;
 
 namespace srd_AutoExtractor.Classes
 {
     public class Extraction
     {
-        internal CompressedFile compressedFile;
-        internal string operatingPath;
-
         public event EventHandler FolderAlreadyExists;
         public event EventHandler<ExtractionStartedEventArgs> ExtractionStarted;
         public event EventHandler<ExtractionCompletedEventArgs> ExtractionCompleted;
-        public event EventHandler ExtractionFailed;
+
+        public FileInfo Archivepath { get; private set; }
+        public string ExtractionFolder { get; private set; }
+        public bool Processing { get; private set; }
+        public uint ExtractedFilecount { get; private set; }
 
         #region Constructor
-        public Extraction(CompressedFile compressedFile, string operatingPath = null)
+        public Extraction(string archivepath)
         {
-            this.compressedFile = compressedFile;
-            if (operatingPath != null)
-            {
-                this.operatingPath = operatingPath;
-            }
-            else
-            {
-                this.operatingPath = this.compressedFile.FileInfo.DirectoryName;
-            }
+            this.Archivepath = new(archivepath);
+        }
+        public Extraction(string archivepath, string extractionFolder) : this(archivepath)
+        {
+            this.ExtractionFolder = extractionFolder;
         }
         #endregion
 
+        public Task ExtractAsync()
+        {
+            return Task.Factory.StartNew(() =>
+            {
+                this.Extract();
+            });
+        }
+
         public void Extract()
         {
-            if (this.compressedFile.Processing)
+            if (this.Processing || Core.IsFileLocked(this.Archivepath.FullName))
             {
                 return;
             }
 
-            this.compressedFile.Processing = true;
-
-            // Check if file is locked
-            if (Core.IsFileLocked(this.compressedFile.FileInfo.FullName))
-            {
-                ExitExtraction();
-                return;
-            }
-            // # ### #
+            this.Processing = true;
+            this.ExtractedFilecount = 0;
 
             var sWatch = new Stopwatch();
             sWatch.Start();
-            string newFolder = Path.Combine(this.operatingPath, Path.GetFileNameWithoutExtension(this.compressedFile.FileInfo.Name));
+
+            string newFolder;
+
+            if (this.ExtractionFolder == null)
+            {
+                newFolder = Path.Combine(Path.GetDirectoryName(this.Archivepath.FullName), DetermineExtractionFolder(this.Archivepath.Name));
+            }
+            else
+            {
+                newFolder = Path.Combine(this.ExtractionFolder, DetermineExtractionFolder(this.Archivepath.Name));
+            }
 
             if (Directory.Exists(newFolder))
             {
                 this.FolderAlreadyExists?.Invoke(this, EventArgs.Empty);
-                ExitExtraction();
                 return;
             }
 
             Directory.CreateDirectory(newFolder);
 
-            this.ExtractionStarted?.Invoke(this, new(this.compressedFile.FileInfo.Name));
+            this.ExtractionStarted?.Invoke(this, new(this.Archivepath.Name));
 
-            try
+            if (this.Archivepath.Name.EndsWith("7z"))
             {
-                using (var archiveFile = new ArchiveFile(this.compressedFile.FileInfo.FullName))
-                {
-                    foreach (var entry in archiveFile.Entries)
-                    {
-                        if (entry.IsFolder)
-                        {
-                            Directory.CreateDirectory(Path.Combine(newFolder, entry.FileName));
-                            this.compressedFile.EntriesDirectory++;
-                        }
-                        else
-                        {
-                            entry.Extract(Path.Combine(newFolder, entry.FileName));
-                            this.compressedFile.EntriesFile++;
-                        }
-                    }
-                }
-
-                // tar.gz Exception (Addtional Extraction of TAR)
-                if (this.compressedFile.FileInfo.Name.EndsWith(".tar.gz"))
-                {
-                    string tarName = Directory.GetFiles(newFolder).FirstOrDefault();
-                    string newerFolder = Path.Combine(this.operatingPath, this.compressedFile.FileInfo.Name.Replace(".tar.gz", ""));
-                    if (!Directory.Exists(newerFolder))
-                    {
-                        Directory.CreateDirectory(newerFolder);
-                    }
-                    
-                    using (var archiveFile = new ArchiveFile(tarName))
-                    {
-                        foreach (var entry in archiveFile.Entries)
-                        {
-                            if (entry.IsFolder)
-                            {
-                                Directory.CreateDirectory(Path.Combine(newerFolder, entry.FileName));
-                                this.compressedFile.EntriesDirectory++;
-                            }
-                            else
-                            {
-                                entry.Extract(Path.Combine(newerFolder, entry.FileName));
-                                this.compressedFile.EntriesFile++;
-                            }
-                        }
-                    }
-
-                    if (Directory.Exists(newerFolder))
-                    {
-                        Directory.Delete(newerFolder + ".tar", true);
-                    }
-                }
-                // # ### #
-
-
-                sWatch.Stop();
-                Log.Information($"Extraction successful for \"" + this.compressedFile.FileInfo.Name + "\" in " + sWatch.Elapsed.TotalSeconds.ToString("0.##") + " Seconds");
-                this.compressedFile.OperationTime = sWatch.Elapsed.TotalSeconds;
-
-                this.ExtractionCompleted?.Invoke(this, new(this.compressedFile.FileInfo.Name, sWatch.Elapsed));
+                this.Extract7z(this.Archivepath.FullName, newFolder);
             }
-            catch (Exception)
+            else
             {
-                this.ExtractionFailed?.Invoke(this, EventArgs.Empty);
-                ExitExtraction();
-                return;
+                this.ExtractArchive(this.Archivepath.FullName, newFolder);
             }
 
-            ExitExtraction(true);
+            sWatch.Stop();
+
+            this.ExtractionCompleted?.Invoke(this, new(this.Archivepath.Name, sWatch.Elapsed));
+            this.Processing = false;
         }
 
-        private void ExitExtraction(bool success = false)
+        internal static string DetermineExtractionFolder(string filepath)
         {
-            this.compressedFile.Processing = false;
-            this.compressedFile.WasSuccessful = success;
+            if (filepath.EndsWith("tar.gz"))
+            {
+                return Path.GetFileNameWithoutExtension(filepath).Substring(0, Path.GetFileNameWithoutExtension(filepath).Length - 4);
+            }
+
+            return Path.GetFileNameWithoutExtension(filepath);
+        }
+
+        private void ExtractArchive(string filepath, string extractionfolder)
+        {
+            using (FileStream fs = File.Open(filepath, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                using (IReader r = ReaderFactory.Open(fs))
+                {
+                    while (r.MoveToNextEntry())
+                    {
+                        if (!r.Entry.IsDirectory)
+                        {
+                            this.ExtractedFilecount++;
+                            r.WriteEntryToDirectory(extractionfolder, new()
+                            {
+                                ExtractFullPath = true,
+                                Overwrite = true,
+                                PreserveFileTime = true
+                            });
+                        }
+                    }
+                }
+            }
+        }
+
+        private void Extract7z(string filepath, string extractionfolder)
+        {
+            using (FileStream fs = File.Open(filepath, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                using (ArchiveFile a = new(fs))
+                {
+                    foreach (SevenZipExtractor.Entry e in a.Entries)
+                    {
+                        if (e.IsFolder)
+                        {
+                            Directory.CreateDirectory(Path.Combine(extractionfolder, e.FileName));
+                            continue;
+                        }
+                        this.ExtractedFilecount++;
+                        e.Extract(Path.Combine(extractionfolder, e.FileName));
+                    }
+                }
+            }
         }
     }
 }

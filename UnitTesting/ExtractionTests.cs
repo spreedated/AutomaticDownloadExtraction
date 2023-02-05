@@ -1,6 +1,5 @@
 using NUnit.Framework;
 using srd_AutoExtractor.Classes;
-using srd_AutoExtractor.Models;
 using System.IO;
 using System.Reflection;
 
@@ -26,50 +25,54 @@ namespace UnitTesting
         [Test]
         public void ExtractZipFile()
         {
-            CompressedFile compressedFile = new()
-            {
-                FileInfo = new FileInfo(this.testFile1)
-            };
-
-            Extraction o = new(compressedFile);
+            Extraction o = new(this.testFile1);
 
             Assert.DoesNotThrow(() => { o.Extract(); });
-            Assert.IsTrue(compressedFile.WasSuccessful);
-            Assert.AreEqual(3, compressedFile.EntriesFile);
-            Assert.AreEqual(0, compressedFile.EntriesDirectory);
+            Assert.AreEqual(3, o.ExtractedFilecount);
+
+            o = new(this.testFile1, Path.GetDirectoryName(this.testFile1));
+
+            this.TearDown();
+
+            Assert.DoesNotThrow(() => { o.Extract(); });
+            Assert.AreEqual(3, o.ExtractedFilecount);
         }
 
         [Test]
-        [Ignore("Something wrong here")]
         public void ExtractTarGZFile()
         {
-            CompressedFile compressedFile = new()
-            {
-                FileInfo = new FileInfo(this.testFile2)
-            };
-
-            Extraction o = new(compressedFile);
+            Extraction o = new(this.testFile2);
 
             Assert.DoesNotThrow(() => { o.Extract(); });
-            Assert.IsTrue(compressedFile.WasSuccessful);
-            Assert.AreEqual(3, compressedFile.EntriesFile);
-            Assert.AreEqual(0, compressedFile.EntriesDirectory);
+            Assert.AreEqual(39, o.ExtractedFilecount);
+
+            o = new(this.testFile2, Path.GetDirectoryName(this.testFile2));
+
+            this.TearDown();
+
+            Assert.DoesNotThrow(() => { o.Extract(); });
+            Assert.AreEqual(39, o.ExtractedFilecount);
+
+            this.TearDown();
+
+            Assert.DoesNotThrowAsync(() => o.ExtractAsync() );
+            Assert.AreEqual(39, o.ExtractedFilecount);
         }
 
         [Test]
         public void Extract7ZFile()
         {
-            CompressedFile compressedFile = new()
-            {
-                FileInfo = new FileInfo(this.testFile3)
-            };
-
-            Extraction o = new(compressedFile);
+            Extraction o = new(this.testFile3);
 
             Assert.DoesNotThrow(() => { o.Extract(); });
-            Assert.IsTrue(compressedFile.WasSuccessful);
-            Assert.AreEqual(3, compressedFile.EntriesFile);
-            Assert.AreEqual(0, compressedFile.EntriesDirectory);
+            Assert.AreEqual(3, o.ExtractedFilecount);
+
+            o = new(this.testFile3, Path.GetDirectoryName(this.testFile3));
+
+            this.TearDown();
+
+            Assert.DoesNotThrow(() => { o.Extract(); });
+            Assert.AreEqual(3, o.ExtractedFilecount);
         }
 
         [TearDown]
