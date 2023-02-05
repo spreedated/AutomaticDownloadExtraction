@@ -10,7 +10,6 @@ namespace srd_AutoExtractor.Logic
 {
     internal static class RuntimeStorage
     {
-        internal static Configuration Configuration { get; set; }
         internal static ConfigurationHandler<Configuration> ConfigurationHandler { get; set; }
     }
 }

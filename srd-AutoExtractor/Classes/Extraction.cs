@@ -15,7 +15,7 @@ namespace srd_AutoExtractor.Classes
         public event EventHandler<ExtractionCompletedEventArgs> ExtractionCompleted;
 
         public FileInfo Archivepath { get; private set; }
-        public string ExtractionFolder { get; private set; }
+        public string ExtractionPath { get; private set; }
         public bool Processing { get; private set; }
         public uint ExtractedFilecount { get; private set; }
 
@@ -26,17 +26,9 @@ namespace srd_AutoExtractor.Classes
         }
         public Extraction(string archivepath, string extractionFolder) : this(archivepath)
         {
-            this.ExtractionFolder = extractionFolder;
+            this.ExtractionPath = extractionFolder;
         }
         #endregion
-
-        public Task ExtractAsync()
-        {
-            return Task.Factory.StartNew(() =>
-            {
-                this.Extract();
-            });
-        }
 
         public void Extract()
         {
@@ -51,16 +43,7 @@ namespace srd_AutoExtractor.Classes
             var sWatch = new Stopwatch();
             sWatch.Start();
 
-            string newFolder;
-
-            if (this.ExtractionFolder == null)
-            {
-                newFolder = Path.Combine(Path.GetDirectoryName(this.Archivepath.FullName), DetermineExtractionFolder(this.Archivepath.Name));
-            }
-            else
-            {
-                newFolder = Path.Combine(this.ExtractionFolder, DetermineExtractionFolder(this.Archivepath.Name));
-            }
+            string newFolder = DetermineExtractionPath();
 
             if (Directory.Exists(newFolder))
             {
@@ -85,6 +68,24 @@ namespace srd_AutoExtractor.Classes
 
             this.ExtractionCompleted?.Invoke(this, new(this.Archivepath.Name, sWatch.Elapsed));
             this.Processing = false;
+        }
+
+        public Task ExtractAsync()
+        {
+            return Task.Factory.StartNew(() =>
+            {
+                this.Extract();
+            });
+        }
+
+        internal string DetermineExtractionPath()
+        {
+            if (this.ExtractionPath == null)
+            {
+                return Path.Combine(Path.GetDirectoryName(this.Archivepath.FullName), DetermineExtractionFolder(this.Archivepath.Name));
+            }
+
+            return Path.Combine(this.ExtractionPath, DetermineExtractionFolder(this.Archivepath.Name));
         }
 
         internal static string DetermineExtractionFolder(string filepath)

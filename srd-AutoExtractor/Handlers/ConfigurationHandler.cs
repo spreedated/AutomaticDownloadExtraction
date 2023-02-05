@@ -10,7 +10,6 @@ namespace srd_AutoExtractor.Handlers
     internal class ConfigurationHandler<T>
     {
         private readonly CongfigurationHandlerOptions options;
-        private T runtimeConfiguration;
         private Timer autoloadTimer;
         private bool isAutoloadTimerRunning;
 
@@ -19,8 +18,10 @@ namespace srd_AutoExtractor.Handlers
         public event EventHandler ConfigSaved;
         public event EventHandler ConfigInvalid;
 
+        public T RuntimeConfiguration { get; private set; }
+
         #region Constructor
-        public ConfigurationHandler(T runtimeConfiguration, CongfigurationHandlerOptions options)
+        public ConfigurationHandler(CongfigurationHandlerOptions options)
         {
             if (options == null)
             {
@@ -31,7 +32,7 @@ namespace srd_AutoExtractor.Handlers
                 throw new ArgumentException("The configpath cannot be unset", nameof(options));
             }
 
-            this.runtimeConfiguration = runtimeConfiguration;
+            this.RuntimeConfiguration = (T)Activator.CreateInstance(typeof(T));
             this.options = options;
 
             this.InterpretOptions();
@@ -115,7 +116,14 @@ namespace srd_AutoExtractor.Handlers
                 return;
             }
 
-            this.runtimeConfiguration = JsonConvert.DeserializeObject<T>(json);
+            T c = JsonConvert.DeserializeObject<T>(json);
+
+            if (this.RuntimeConfiguration != null && this.RuntimeConfiguration.Equals(c))
+            {
+                return;
+            }
+
+            this.RuntimeConfiguration = c;
 
             this.ConfigLoaded?.Invoke(this, EventArgs.Empty);
         }
@@ -131,12 +139,12 @@ namespace srd_AutoExtractor.Handlers
             {
                 using (StreamWriter w = new(fs))
                 {
-                    if (this.runtimeConfiguration == null)
+                    if (this.RuntimeConfiguration == null)
                     {
-                        this.runtimeConfiguration = (T)Activator.CreateInstance(typeof(T));
+                        this.RuntimeConfiguration = (T)Activator.CreateInstance(typeof(T));
                     }
 
-                    w.Write(JsonConvert.SerializeObject(this.runtimeConfiguration, Formatting.Indented));
+                    w.Write(JsonConvert.SerializeObject(this.RuntimeConfiguration, Formatting.Indented));
                 }
             }
 

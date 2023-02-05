@@ -13,7 +13,7 @@ namespace srd_AutoExtractor
     {
         private static void LoadConfiguration()
         {
-            RuntimeStorage.ConfigurationHandler = new(RuntimeStorage.Configuration, new()
+            RuntimeStorage.ConfigurationHandler = new ConfigurationHandler<Models.Configuration>(new()
             {
                 ConfigPath = Path.Combine(Path.GetDirectoryName(typeof(ServiceEntry).Assembly.Location), Constants.CONFIGURATION_FILENAME)
             });
