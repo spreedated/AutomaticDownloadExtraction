@@ -972,6 +972,12 @@
             <param name="linkPath">Provide the links filepath, don't forget to add a lnk extension</param>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
+        <member name="P:neXn.Lib.Paths.Paths.FileExtension">
+            <summary>
+            Get the fileextension without leading dot.
+            </summary>
+            <returns>null on folder path</returns>
+        </member>
         <member name="T:neXn.Lib.RandomGeneration.RandomNumber">
             <summary>
             Class with Methods to Create Random Numbers.

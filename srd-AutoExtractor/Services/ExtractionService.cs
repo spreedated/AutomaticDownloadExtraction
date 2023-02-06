@@ -1,4 +1,5 @@
 ﻿using neXn.Lib.Files;
+using neXn.Lib.Paths;
 using Serilog;
 using srdAutoExtractor.Logic;
 using System;
@@ -21,6 +22,12 @@ namespace srdAutoExtractor.Services
         #region Constructor
         public ExtractionService(string watchfolder)
         {
+            Paths p = new(watchfolder);
+            if (!p.IsValid())
+            {
+                throw new ArgumentException("Path is not valid", nameof(watchfolder));
+            }
+
             this.WatchFolder = watchfolder;
         }
         #endregion
@@ -28,10 +35,10 @@ namespace srdAutoExtractor.Services
         public void Start()
         {
             this.CheckWatchFolder();
+            this.InitializeWatcher();
             this.watcher.Error += OnError;
             this.watcher.Created += OnCreation;
-
-            this.InitializeWatcher();
+            
             this.IsRunning = true;
         }
 
@@ -111,7 +118,7 @@ namespace srdAutoExtractor.Services
 
         private void ExtractionCompleted(object sender, ExtractionCompletedEventArgs e)
         {
-            Log.Information($"Extraction completed for file \"{e.Filepath}\" - process duration {e.Duration:hh\\:mm\\:ss\\:ffffff}");
+            Log.Information($"Extraction completed for file \"{e.Filepath}\" extracted {e.Filecount} file{(e.Filecount == 1 ? "s" : "")} - process duration {e.Duration:hh\\:mm\\:ss\\:ffffff}");
         }
 
         private void CheckWatchFolder()

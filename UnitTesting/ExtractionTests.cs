@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using srdAutoExtractor.Classes;
+using srdAutoExtractor.Logic;
 using System.IO;
 using System.Reflection;
 

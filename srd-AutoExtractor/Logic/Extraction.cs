@@ -4,6 +4,7 @@ using SharpCompress.Readers;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace srdAutoExtractor.Logic
@@ -66,7 +67,7 @@ namespace srdAutoExtractor.Logic
 
             sWatch.Stop();
 
-            this.ExtractionCompleted?.Invoke(this, new(this.Archivepath.Name, sWatch.Elapsed));
+            this.ExtractionCompleted?.Invoke(this, new(this.Archivepath.Name, sWatch.Elapsed, this.ExtractedFilecount));
             this.Processing = false;
         }
 
@@ -127,16 +128,8 @@ namespace srdAutoExtractor.Logic
             {
                 using (ArchiveFile a = new(fs))
                 {
-                    foreach (SevenZipExtractor.Entry e in a.Entries)
-                    {
-                        if (e.IsFolder)
-                        {
-                            Directory.CreateDirectory(Path.Combine(extractionfolder, e.FileName));
-                            continue;
-                        }
-                        this.ExtractedFilecount++;
-                        e.Extract(Path.Combine(extractionfolder, e.FileName));
-                    }
+                    a.Extract(extractionfolder);
+                    this.ExtractedFilecount = (uint)a.Entries.Count(x => !x.IsFolder);
                 }
             }
         }
