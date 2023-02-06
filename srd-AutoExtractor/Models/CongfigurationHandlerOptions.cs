@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace srd_AutoExtractor.Models
+namespace srdAutoExtractor.Models
 {
     internal class CongfigurationHandlerOptions
     {
@@ -16,7 +16,7 @@ namespace srd_AutoExtractor.Models
         /// The interval for the autorefresh feature<br/>
         /// default is one minute
         /// </summary>
-        public TimeSpan AutoloadInterval { get; set; } = new TimeSpan(0,1,0);
+        public TimeSpan AutoloadInterval { get; set; } = new TimeSpan(0, 1, 0);
         /// <summary>
         /// Determines if a corrupted JSON should be overwritten
         /// </summary>

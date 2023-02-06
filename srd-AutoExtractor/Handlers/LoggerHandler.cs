@@ -1,10 +1,10 @@
 ﻿using Serilog;
 using Serilog.Events;
-using srd_AutoExtractor.Logger.Enricher;
-using srd_AutoExtractor.Logic;
+using srdAutoExtractor.Logger.Enricher;
+using srdAutoExtractor.Logic;
 using System.IO;
 
-namespace srd_AutoExtractor.Handlers
+namespace srdAutoExtractor.Handlers
 {
     internal static class LoggerHandler
     {

@@ -1,16 +1,19 @@
 ﻿#pragma warning disable S1185
 
 using Serilog;
-using srd_AutoExtractor.Classes;
-using srd_AutoExtractor.Handlers;
-using srd_AutoExtractor.Logic;
+using srdAutoExtractor.Collections;
+using srdAutoExtractor.Handlers;
+using srdAutoExtractor.Logic;
+using srdAutoExtractor.Services;
 using System.IO;
 using System.ServiceProcess;
 
-namespace srd_AutoExtractor
+namespace srdAutoExtractor
 {
     internal class ServiceEntry : ServiceBase
     {
+        private readonly ServiceList<IService> services = new();
+
         private static void LoadConfiguration()
         {
             RuntimeStorage.ConfigurationHandler = new ConfigurationHandler<Models.Configuration>(new()
@@ -29,10 +32,11 @@ namespace srd_AutoExtractor
         protected override void OnStart(string[] args)
         {
             base.OnStart(args);
+
             LoggerHandler.ConfigureLogger();
             LoadConfiguration();
 
-            Engine.Initialize();
+            services.Add(new ExtractionService(RuntimeStorage.ConfigurationHandler.RuntimeConfiguration.WatchFolder));
         }
 
         protected override void OnStop()

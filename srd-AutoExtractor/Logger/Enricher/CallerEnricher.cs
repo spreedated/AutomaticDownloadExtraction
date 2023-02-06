@@ -4,7 +4,7 @@ using Serilog.Core;
 using Serilog.Events;
 using System.Diagnostics;
 
-namespace srd_AutoExtractor.Logger.Enricher
+namespace srdAutoExtractor.Logger.Enricher
 {
     public class CallerEnricher : ILogEventEnricher
     {

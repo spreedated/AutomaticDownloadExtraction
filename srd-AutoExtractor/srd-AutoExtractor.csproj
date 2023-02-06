@@ -7,7 +7,35 @@
     <AssemblyOriginatorKeyFile>wackermann.snk</AssemblyOriginatorKeyFile>
     <PublishReadyToRun>true</PublishReadyToRun>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <RootNamespace>$(MSBuildProjectName.Replace(" ", "").Replace("-", ""))</RootNamespace>
+    <Title>Auto Extractor</Title>
+    <Nullable>disable</Nullable>
+    <Authors>Markus Wackermann</Authors>
+    <Company>None</Company>
+    <Description>By default monitors a "AutoExtract" folder in your personal download folder and automatically extracts archives.
+</Description>
+    <Copyright>2018-2023 $(Author)</Copyright>
+    <PackageProjectUrl></PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/spreedated/AutomaticDownloadExtraction</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <AnalysisLevel>latest</AnalysisLevel>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;IDE0074;IDE0063</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;IDE0074;IDE0063</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="7.0.0" />

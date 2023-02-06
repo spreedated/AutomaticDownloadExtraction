@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 
-namespace srd_AutoExtractor
+namespace srdAutoExtractor
 {
     internal static class Program
     {

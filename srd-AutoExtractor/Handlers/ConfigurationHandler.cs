@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using srdAutoExtractor.Models;
 using System;
 using System.IO;
 using System.Timers;
-using srd_AutoExtractor.Models;
 
-namespace srd_AutoExtractor.Handlers
+namespace srdAutoExtractor.Handlers
 {
     internal class ConfigurationHandler<T>
     {

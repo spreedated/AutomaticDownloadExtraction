@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using srd_AutoExtractor.Models;
-using srd_AutoExtractor.Handlers;
+﻿using srdAutoExtractor.Handlers;
+using srdAutoExtractor.Models;
 
-namespace srd_AutoExtractor.Logic
+namespace srdAutoExtractor.Logic
 {
     internal static class RuntimeStorage
     {

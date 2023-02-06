@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace srd_AutoExtractor.Models
+namespace srdAutoExtractor.Models
 {
     internal class Configuration
     {

@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace srd_AutoExtractor.Classes
+namespace srdAutoExtractor.Logic
 {
     public class Extraction
     {
