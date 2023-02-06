@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ using System.Timers;
 using neXn.Lib.Files;
 using Serilog;
 using srd_AutoExtractor.Logic;
+using static System.Net.WebRequestMethods;
 
 namespace srd_AutoExtractor.Classes
 {
@@ -64,36 +66,8 @@ namespace srd_AutoExtractor.Classes
                 CheckWatchFolder();
                 InitializeWatcher();
 
-                watcher.Error += (o,e) =>
-                {
-                    watcher.Dispose();
-                    systemwatcheralreadyrunning = false;
-                    CheckWatchFolder();
-                    InitializeWatcher();
-                };
-
-                watcher.Created += async (o, e) =>
-                {
-                    if ((e.Name.EndsWith(".zip") || e.Name.EndsWith(".7z") || e.Name.EndsWith(".rar")) && (!work.ContainsKey(e.FullPath) || !work[e.FullPath]))
-                    {
-                        work.TryAdd(e.FullPath, true);
-
-                        Extraction ex = new(e.FullPath);
-                        ex.ExtractionStarted += ExtractionStarted;
-                        ex.ExtractionCompleted += ExtractionCompleted;
-
-                        await Task.Delay(500);
-
-                        while (Core.IsFileLocked(e.FullPath))
-                        {
-                            await Task.Delay(50);
-                        }
-
-                        await ex.ExtractAsync();
-
-                        work[e.FullPath] = false;
-                    }
-                };
+                watcher.Error += OnError;
+                watcher.Created += OnCreation;
 
                 return true;
             });
@@ -102,12 +76,52 @@ namespace srd_AutoExtractor.Classes
         }
         #endregion
 
+        private async static void OnCreation(object sender, FileSystemEventArgs e)
+        {
+            if (Constants.SUPPORTED_FILE_EXTENSIONS.Contains(Path.GetExtension(e.FullPath).TrimStart('.')) && (!work.ContainsKey(e.FullPath) || !work[e.FullPath]))
+            {
+                work.TryAdd(e.FullPath, true);
+
+                Extraction ex = new(e.FullPath);
+                ex.ExtractionStarted += ExtractionStarted;
+                ex.ExtractionCompleted += ExtractionCompleted;
+
+                await Task.Delay(500);
+
+                while (Core.IsFileLocked(e.FullPath))
+                {
+                    await Task.Delay(50);
+                }
+
+                await ex.ExtractAsync();
+
+                work[e.FullPath] = false;
+            }
+            CleanupWorkDictionary();
+        }
+
+        private static void OnError(object sender, ErrorEventArgs e)
+        {
+            Log.Verbose(e.GetException(), "Error:");
+            watcher.Dispose();
+            systemwatcheralreadyrunning = false;
+            CheckWatchFolder();
+            InitializeWatcher();
+        }
+
+        private static void CleanupWorkDictionary()
+        {
+            foreach (KeyValuePair<string, bool> w in work.Where(x => !x.Value))
+            {
+                work.TryRemove(w);
+            }
+        }
+
         private static void InitializeWatcher()
         {
             watcher = new(RuntimeStorage.ConfigurationHandler.RuntimeConfiguration.WatchFolder)
             {
-                EnableRaisingEvents = true,
-                
+                EnableRaisingEvents = true
             };
         }
 
